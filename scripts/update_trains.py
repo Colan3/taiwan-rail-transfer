@@ -150,7 +150,7 @@ def adult_oneway_fares(operator, origin_id, destination_id, headers):
                     '成自': '自強',
                     '成莒': '莒光',
                     '成區': '區間',
-                    '成復': '復興',
+                    '成復': '區間',  # TDX legacy fare label: local/fast-local fare class
                     '成普': '普快',
                 }.get(ticket_type)
                 if category is None:
@@ -169,7 +169,7 @@ def tra_category(train):
     if name in ('自強', '自強號'):
         return '自強'
     if name in ('復興', '復興號'):
-        return '復興'
+        return '區間'  # Shares the fare class represented by TDX 成復
     if name in ('普快', '普快車'):
         return '普快'
     # Do not silently assume newer premium trains use the ordinary Tze-Chiang fare.
