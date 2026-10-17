@@ -3,6 +3,8 @@ import datetime as dt
 import json
 import os
 import logging
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -22,6 +24,35 @@ ROUTES = [
 ]
 
 
+SESSION = requests.Session()
+SESSION.mount('https://', HTTPAdapter(max_retries=Retry(
+    total=5, status=5, connect=3, read=2,
+    backoff_factor=2, status_forcelist=[429, 500, 502, 503, 504],
+    allowed_methods=frozenset(['GET']), respect_retry_after_header=True
+)))
+
+
+def request_json(url, headers, params=None, timeout=65):
+    response = SESSION.get(url, headers=headers, params=params, timeout=timeout)
+    response.raise_for_status()
+    return response.json()
+
+
+def fare_shape_diagnostic(operator, items):
+    """Log only schema and fare classification fields, never credentials."""
+    if not items:
+        print(f'DIAG {operator}: ODFare returned zero records')
+        return
+    first = items[0]
+    fares = first.get('Fares') or []
+    print(f'DIAG {operator}: records={len(items)}, itemKeys={sorted(first.keys())}, '
+          f'fareCount={len(fares)}')
+    for f in fares[:8]:
+        safe = {k: f.get(k) for k in ('TicketType', 'FareClass', 'CabinClass',
+                                     'Price', 'TicketTypeName', 'FareClassName') if k in f}
+        print(f'DIAG {operator} fareFields: {json.dumps(safe, ensure_ascii=False)}')
+
+
 def token():
     cid = os.environ['TDX_CLIENT_ID']
     secret = os.environ['TDX_CLIENT_SECRET']
@@ -33,9 +64,7 @@ def token():
 
 def fetch(operator, date, headers):
     url = f'{BASE}/{operator}/DailyTimetable/TrainDate/{date}'
-    r = requests.get(url, headers=headers, params={'$format': 'JSON'}, timeout=120)
-    r.raise_for_status()
-    value = r.json()
+    value = request_json(url, headers, params={'$format': 'JSON'}, timeout=120)
     if isinstance(value, dict):
         value = value.get('value', [])
     if not isinstance(value, list):
@@ -80,10 +109,8 @@ def extract(entries, operator, origin, destination):
 
 def api_list(path, headers, params=None):
     """Fetch only small station/OD datasets; never download TRA's entire fare matrix."""
-    response = requests.get(f'{BASE}/{path}', headers=headers,
-                            params={**(params or {}), '$format': 'JSON'}, timeout=65)
-    response.raise_for_status()
-    obj = response.json()
+    obj = request_json(f'{BASE}/{path}', headers,
+                       params={**(params or {}), '$format': 'JSON'})
     if isinstance(obj, dict):
         obj = obj.get('value', obj.get('Stations', obj.get('ODFares', [])))
     if not isinstance(obj, list):
@@ -104,9 +131,11 @@ def station_ids(operator, headers):
 def adult_oneway_fares(operator, origin_id, destination_id, headers):
     # ODFare/{origin}/to/{destination} is a route-specific TDX v2 endpoint.
     items = api_list(f'{operator}/ODFare/{origin_id}/to/{destination_id}', headers)
+    fare_shape_diagnostic(operator, items)
     options = []
     for item in items:
         for f in item.get('Fares', []):
+            # Keep existing conservative policy until actual TDX schema is verified.
             if str(f.get('TicketType')) != '1' or str(f.get('FareClass')) != '1':
                 continue
             if operator == 'THSR' and str(f.get('CabinClass')) != '1':
