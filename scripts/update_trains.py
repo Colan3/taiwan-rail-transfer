@@ -1,8 +1,9 @@
-"""Fetch today's Taiwan rail timetables from TDX into data/trains.json."""
+"""Fetch today and the next 30 days of Taiwan rail timetables from TDX."""
 import datetime as dt
 import json
 import os
 import logging
+import time
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from pathlib import Path
@@ -11,7 +12,12 @@ from zoneinfo import ZoneInfo
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'data' / 'trains.json'
+DATA_DIR = ROOT / 'data'
+OUTPUT = DATA_DIR / 'trains.json'
+HORIZON_DAYS = 30
+# Always refresh the near future. Cached farther dates reduce TDX request volume.
+REFRESH_DAYS = 2
+REQUEST_GAP_SECONDS = 0.35
 AUTH = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token'
 BASE = 'https://tdx.transportdata.tw/api/basic/v2/Rail'
 ROUTES = [
@@ -35,6 +41,7 @@ SESSION.mount('https://', HTTPAdapter(max_retries=Retry(
 def request_json(url, headers, params=None, timeout=65):
     response = SESSION.get(url, headers=headers, params=params, timeout=timeout)
     response.raise_for_status()
+    time.sleep(REQUEST_GAP_SECONDS)
     return response.json()
 
 
@@ -47,7 +54,7 @@ def fare_shape_diagnostic(operator, items):
     fares = first.get('Fares') or []
     print(f'DIAG {operator}: records={len(items)}, itemKeys={sorted(first.keys())}, '
           f'fareCount={len(fares)}')
-    for f in fares[:]:
+    for f in fares[:8]:
         safe = {k: f.get(k) for k in ('TicketType', 'FareClass', 'CabinClass',
                                      'Price', 'TicketTypeName', 'FareClassName') if k in f}
         print(f'DIAG {operator} fareFields: {json.dumps(safe, ensure_ascii=False)}')
@@ -176,53 +183,124 @@ def tra_category(train):
     return None
 
 
-def assign_fares(routes, headers):
-    """Only attach a price when a matching fare category is unambiguous."""
+def fetch_fare_catalog(headers):
+    """Fetch each OD fare only once per run, rather than once per date."""
     stations = {op: station_ids(op, headers) for op in ('TRA', 'THSR')}
-    diagnostics = []
+    catalogs = {}
     for key, operator, origin, destination in ROUTES:
         try:
             a, b = stations[operator][origin], stations[operator][destination]
-            fares = adult_oneway_fares(operator, a, b, headers)
-            if not fares:
-                raise ValueError('No adult one-way fare found')
-            for train in routes[key]:
-                if operator == 'TRA':
-                    category = tra_category(train)
-                    matches = [f for f in fares if f['category'] == category] if category else []
-                else:
-                    matches = [f for f in fares if f['category'] == 'THSR_STANDARD']
-                unique = {f['price'] for f in matches}
-                if len(unique) == 1:
-                    train['fare'] = unique.pop()
-            resolved = sum(x['fare'] is not None for x in routes[key])
-            diagnostics.append(f'{key}: {resolved}/{len(routes[key])} fares')
+            catalogs[key] = adult_oneway_fares(operator, a, b, headers)
+            print(f'FARE CATALOG: {key}: {len(catalogs[key])} options', flush=True)
         except (requests.RequestException, KeyError, ValueError, TypeError) as exc:
-            diagnostics.append(f'{key}: unavailable ({exc})')
+            catalogs[key] = []
             logging.warning('Fare unavailable for %s: %s', key, exc)
+    return catalogs
+
+
+def assign_fares(routes, catalogs):
+    diagnostics = []
+    for key, operator, origin, destination in ROUTES:
+        fares = catalogs.get(key, [])
+        for train in routes[key]:
+            if operator == 'TRA':
+                category = tra_category(train)
+                matches = [f for f in fares if f['category'] == category] if category else []
+            else:
+                matches = [f for f in fares if f['category'] == 'THSR_STANDARD']
+            unique = {f['price'] for f in matches}
+            if len(unique) == 1:
+                train['fare'] = unique.pop()
+        resolved = sum(x['fare'] is not None for x in routes[key])
+        diagnostics.append(f'{key}: {resolved}/{len(routes[key])} fares')
     return diagnostics
+
+
+def load_cached(path, expected_date):
+    try:
+        obj = json.loads(path.read_text(encoding='utf-8'))
+        if obj.get('date') != expected_date or not isinstance(obj.get('routes'), dict):
+            return None
+        if any(not isinstance(obj['routes'].get(key), list) or not obj['routes'][key]
+               for key, _, _, _ in ROUTES):
+            return None
+        return obj
+    except (OSError, ValueError, TypeError, AttributeError):
+        return None
+
+
+def write_json(path, obj):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+
+def make_day(date, now, headers, catalogs):
+    datasets = {operator: fetch(operator, date, headers) for operator in ('TRA', 'THSR')}
+    routes = {key: extract(datasets[operator], operator, origin, destination)
+              for key, operator, origin, destination in ROUTES}
+    missing = [key for key, trains in routes.items() if not trains]
+    if missing:
+        raise ValueError(f'Incomplete timetable for {date}: {missing}')
+    diagnostics = assign_fares(routes, catalogs)
+    print(f'{date}: ' + ', '.join(diagnostics), flush=True)
+    return {
+        'date': date,
+        'updatedAt': now.isoformat(timespec='seconds'),
+        'source': 'TDX date-specific scheduled timetable and ODFare (not real-time)',
+        'farePolicy': 'Adult one-way; THSR standard reserved; TRA explicit fare categories',
+        'routes': routes,
+    }
 
 def main():
     now = dt.datetime.now(ZoneInfo('Asia/Taipei'))
-    date = now.date().isoformat()
+    today = now.date()
     headers = {'Authorization': 'Bearer ' + token(), 'Accept': 'application/json'}
-    datasets = {operator: fetch(operator, date, headers) for operator in ('TRA', 'THSR')}
-    routes = {key: extract(datasets[operator], operator, start, end)
-              for key, operator, start, end in ROUTES}
-    # Fail closed: do not replace yesterday's file with an apparently valid empty timetable.
-    empty = [key for key, trains in routes.items() if not trains]
-    if empty:
-        raise RuntimeError(f'No trains returned for: {empty}. Check TDX schema, permissions and station names.')
-    fare_diagnostics = assign_fares(routes, headers)
-    for diagnostic in fare_diagnostics:
-        print('FARE:', diagnostic)
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    data = {'date': date, 'updatedAt': now.isoformat(timespec='seconds'),
-            'source': 'TDX daily timetable and ODFare (scheduled, not real-time)',
-            'farePolicy': 'Adult one-way; THSR standard reserved; TRA matched by explicit non-discounted adult ticket type and train category',
-            'routes': routes}
-    OUTPUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'Wrote {OUTPUT}: ' + ', '.join(f'{k}={len(v)}' for k, v in routes.items()))
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    # One fare catalog shared by every date. This avoids ~186 extra fare calls.
+    catalogs = fetch_fare_catalog(headers)
+    available = []
+    unavailable = []
+    for offset in range(HORIZON_DAYS + 1):
+        day = today + dt.timedelta(days=offset)
+        date = day.isoformat()
+        path = DATA_DIR / f'{date}.json'
+        cached = load_cached(path, date)
+        if cached is not None and offset > REFRESH_DAYS:
+            available.append(date)
+            print(f'CACHE: {date} (previously fetched)', flush=True)
+            continue
+        try:
+            obj = make_day(date, now, headers, catalogs)
+            write_json(path, obj)
+            if offset == 0:
+                # Preserve compatibility with the existing V8 URL.
+                write_json(OUTPUT, obj)
+            available.append(date)
+            print(f'OK: {date} -> {path.relative_to(ROOT)}', flush=True)
+        except (requests.RequestException, KeyError, ValueError, TypeError) as exc:
+            # Do not publish partial or fabricated timetables.
+            if cached is not None:
+                available.append(date)
+                if offset == 0:
+                    write_json(OUTPUT, cached)
+                logging.warning('Using cached %s after fetch failure: %s', date, exc)
+            else:
+                unavailable.append(date)
+                logging.warning('Date %s unavailable: %s', date, exc)
+                if offset == 0:
+                    raise RuntimeError('Today has no complete timetable; refusing to publish.') from exc
+
+    # A manifest tells the web page which dates have complete published datasets.
+    manifest = {
+        'startDate': today.isoformat(),
+        'endDate': (today + dt.timedelta(days=HORIZON_DAYS)).isoformat(),
+        'updatedAt': now.isoformat(timespec='seconds'),
+        'availableDates': available,
+        'unavailableDates': unavailable,
+    }
+    write_json(DATA_DIR / 'dates.json', manifest)
+    print(f'DONE: available={len(available)} unavailable={len(unavailable)}', flush=True)
 
 
 if __name__ == '__main__':
