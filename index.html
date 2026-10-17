@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>台灣鐵路雙向三段轉乘查詢</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:#edf3f9;color:#163249}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:16px 14px 48px}header{background:linear-gradient(120deg,#113e75,#007d97);color:white;padding:25px 20px;border-radius:16px}h1{font-size:1.5rem;margin:0 0 8px}h2{font-size:1.08rem;margin:0 0 12px}.muted{color:#577084;font-size:.89rem;line-height:1.65}.card{background:white;border-radius:14px;padding:17px;margin-top:14px;box-shadow:0 3px 12px #12345610}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}label{display:block;font-weight:650;margin-bottom:6px}select,input,button{font:inherit}select,input{width:100%;padding:11px;border:1px solid #b6c8d8;border-radius:9px;background:white;color:#163249}button{padding:11px 15px;border:0;border-radius:9px;background:#075b95;color:white;font-weight:700;cursor:pointer}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tabs button{background:#e6eff7;color:#17456b}.tabs button.active{background:#075b95;color:white}.status{padding:12px;background:#eaf3fa;border-radius:9px;line-height:1.6}.status.error{background:#fff0e7;color:#973e20}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stats div{background:#edf5fc;border-radius:9px;padding:12px}.stats strong{display:block;font-size:1.15rem;color:#075b95;margin-top:6px}.summary{white-space:pre-line;line-height:1.8;background:#f1f6fb;border-radius:9px;padding:13px}.links a{color:#075b95;margin-right:16px}.small{font-size:.82rem}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #64bbdc}@media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body><main class="wrap">
+<header><h1>🚄 台灣鐵路三段式轉乘查詢</h1><div>去程／返程切換・24 小時出發時間・TDX 當日預定班次</div></header>
+<section class="card"><h2>查詢條件</h2><div class="tabs" role="group" aria-label="選擇去程或返程"><button id="outbound" class="active" type="button" aria-pressed="true">➡️ 去程</button><button id="inbound" type="button" aria-pressed="false">⬅️ 返程</button></div><div class="grid" style="margin-top:14px"><div><label for="date">搭乘日期</label><input id="date" type="date"></div><div><label for="hour">出發小時（24 小時制）</label><select id="hour"></select></div><div><label for="minute">出發分鐘</label><select id="minute"></select></div></div><p class="muted">出發時間是第一段列車的最早出發時間。選擇第一段後，第二、三段會依實際轉乘時間自動篩選。</p><div class="grid"><div><label id="walk1label" for="walk1">豐富 → 高鐵苗栗（分鐘）</label><input id="walk1" type="number" min="0" max="180" value="15"></div><div><label id="walk2label" for="walk2">高鐵台中 → 新烏日（分鐘）</label><input id="walk2" type="number" min="0" max="180" value="15"></div></div></section>
+<section class="card"><h2>自動班次資料</h2><div id="status" class="status" role="status" aria-live="polite">正在載入 TDX 預定時刻表…</div><p class="muted small" id="meta"></p><button id="reload" type="button">重新讀取資料</button></section>
+<section class="card"><h2 id="title1">① 台鐵｜竹南 → 豐富</h2><label for="s1">選擇第一段班次</label><select id="s1"></select></section>
+<section class="card"><h2 id="title2">② 高鐵｜苗栗 → 台中</h2><label for="s2">選擇可轉乘班次</label><select id="s2"></select></section>
+<section class="card"><h2 id="title3">③ 台鐵｜新烏日 → 二水</h2><label for="s3">選擇可轉乘班次</label><select id="s3"></select></section>
+<section class="card"><h2>行程摘要</h2><div class="summary" id="summary">正在載入班次…</div><div class="stats" style="margin-top:12px"><div>全程耗時<strong id="duration">—</strong></div><div>兩次轉乘時間合計<strong id="wait">—</strong></div><div>全票總額<strong id="fare">—</strong></div><div>抵達時間<strong id="arrival">—</strong></div></div></section>
+<section class="card"><h2>資料來源與注意事項</h2><p class="muted">資料由 GitHub Actions 透過 TDX 產生，屬於預定時刻表，非即時誤點／停駛資訊。票價尚未串接，故不顯示估算票價。若所選日期與 JSON 日期不同，系統會停止顯示班次，以免使用錯誤日期資料。午夜跨日轉乘需另外核對次日班次。</p><div class="links"><a href="https://www.thsrc.com.tw/" target="_blank" rel="noopener">高鐵官方網站 ↗</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/gobytime" target="_blank" rel="noopener">台鐵官方時刻表 ↗</a></div></section>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
+const ROUTES={outbound:[['tra_1','台鐵','竹南','豐富'],['thsr','高鐵','苗栗','台中'],['tra_2','台鐵','新烏日','二水']],inbound:[['return_tra_1','台鐵','二水','新烏日'],['return_thsr','高鐵','台中','苗栗'],['return_tra_2','台鐵','豐富','竹南']]};
+let direction='outbound',payload=null,valid=false,records=[[],[],[]];
+function twToday(){const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`}
+function mins(t){const m=/^([01]\d|2[0-3]):([0-5]\d)$/.exec(t||'');return m?Number(m[1])*60+Number(m[2]):NaN}
+function time(t){return pad(Math.floor(t/60)%24)+':'+pad(t%60)+(t>=1440?'（隔日）':'')}
+function placeholder(sel,message){sel.replaceChildren(new Option(message,''))}
+function choices(id,list,message){const el=$(id),old=el.value;placeholder(el,message);for(const r of list)el.add(new Option(`${r.trainNo} 次｜${time(r.start)} → ${time(r.end)}`,r.id));if(list.some(x=>x.id===old))el.value=old;return list.find(x=>x.id===el.value)||null}
+function reset(){for(const k of ['duration','wait','fare','arrival'])$(k).textContent='—'}
+function routeData(){const routes=ROUTES[direction];records=routes.map(([key])=>(payload?.routes?.[key]||[]).map((r,i)=>{const start=mins(r.departure),end=mins(r.arrival);return {id:`${key}-${i}`,trainNo:String(r.trainNo),start,end:end<start?end+1440:end,fare:r.fare}}).filter(r=>Number.isFinite(r.start)&&Number.isFinite(r.end)).sort((a,b)=>a.start-b.start))}
+function refresh(){reset();if(!valid){['s1','s2','s3'].forEach(k=>placeholder($(k),'目前沒有適用班次'));$('summary').textContent='請先確認當日資料已載入。';return}
+ const earliest=Number($('hour').value)*60+Number($('minute').value),w1=Math.max(0,Number($('walk1').value)||0),w2=Math.max(0,Number($('walk2').value)||0);
+ const a=choices('s1',records[0].filter(r=>r.start>=earliest),'請選擇第一段班次');
+ const b=choices('s2',a?records[1].filter(r=>r.start>=a.end+w1):[],'請先選擇第一段');
+ const c=choices('s3',b?records[2].filter(r=>r.start>=b.end+w2):[],'請先選擇第二段');
+ if(!a||!b||!c){$('summary').textContent='請依序選擇三段列車。若無班次，可能是時間不足、班次已結束，或跨日班次未包含在當日資料中。';return}
+ const route=ROUTES[direction],total=c.end-a.start,wait1=b.start-a.end,wait2=c.start-b.end;
+ $('summary').textContent=[a,b,c].map((r,i)=>`${i+1}. ${route[i][1]} ${r.trainNo} 次｜${route[i][2]} ${time(r.start)} → ${route[i][3]} ${time(r.end)}`).join('\n')+`\n\n第一次轉乘：${wait1} 分鐘（含預留步行 ${w1} 分鐘）\n第二次轉乘：${wait2} 分鐘（含預留步行 ${w2} 分鐘）`;
+ $('duration').textContent=`${Math.floor(total/60)} 小時 ${total%60} 分`;$('wait').textContent=`${wait1+wait2} 分`;$('fare').textContent=[a,b,c].every(r=>Number.isFinite(r.fare))?'NT$ '+[a,b,c].reduce((n,r)=>n+r.fare,0):'尚未提供';$('arrival').textContent=time(c.end)
+}
+function display(){const route=ROUTES[direction];route.forEach((r,i)=>$(`title${i+1}`).textContent=`${i+1===1?'①':i+1===2?'②':'③'} ${r[1]}｜${r[2]} → ${r[3]}`);
+ $('walk1label').textContent=direction==='outbound'?'豐富 → 高鐵苗栗（分鐘）':'新烏日 → 高鐵台中（分鐘）';$('walk2label').textContent=direction==='outbound'?'高鐵台中 → 新烏日（分鐘）':'高鐵苗栗 → 豐富（分鐘）';
+ for(const key of ['outbound','inbound']){$(key).classList.toggle('active',key===direction);$(key).setAttribute('aria-pressed',String(key===direction))}
+ routeData();for(const k of ['s1','s2','s3'])$(k).value='';refresh()
+}
+async function load(){valid=false;$('status').className='status';$('status').textContent='正在讀取列車資料…';$('meta').textContent='';refresh();try{const response=await fetch(`data/trains.json?t=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw Error(`HTTP ${response.status}`);const obj=await response.json();if(!obj.routes||!obj.date)throw Error('資料格式不完整');payload=obj;const match=obj.date===$('date').value;const keys=ROUTES[direction].map(x=>x[0]);const missing=keys.filter(k=>!Array.isArray(obj.routes[k])||obj.routes[k].length===0);valid=match&&missing.length===0;
+ $('meta').textContent=`資料日期：${obj.date}｜更新時間：${obj.updatedAt||'未提供'}｜來源：TDX 預定時刻表`;
+ $('status').className=valid?'status':'status error';$('status').textContent=!match?`所選日期 ${$('date').value} 與已發布班次日期 ${obj.date} 不同。目前只提供已發布的當日資料。`:missing.length?`目前缺少 ${missing.join('、')} 的班次資料，請先更新 Python 程式並執行 GitHub Actions。`:'當日班次載入成功，請選擇車次。';display();
+ }catch(e){payload=null;valid=false;$('status').className='status error';$('status').textContent=`無法讀取 data/trains.json：${e.message}。請檢查 GitHub Actions 是否已產生檔案。`;display()}}
+for(let h=0;h<24;h++)$('hour').add(new Option(pad(h),pad(h)));for(let m=0;m<60;m++)$('minute').add(new Option(pad(m),pad(m)));$('hour').value='17';$('minute').value='00';$('date').value=twToday();
+for(const k of ['outbound','inbound'])$(k).addEventListener('click',()=>{direction=k;display();if(payload)load()});
+for(const k of ['hour','minute','walk1','walk2','s1','s2','s3'])$(k).addEventListener('change',refresh);
+$('date').addEventListener('change',load);$('reload').addEventListener('click',load);load();
+</script></body></html>
