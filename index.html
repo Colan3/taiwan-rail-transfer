@@ -2,25 +2,72 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>台灣鐵路雙向三段轉乘查詢 V10</title>
+<title>台灣鐵路雙向三段轉乘查詢 V11</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:#edf3f9;color:#163249}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:16px 14px 48px}header{background:linear-gradient(120deg,#113e75,#007d97);color:white;padding:25px 20px;border-radius:16px}h1{font-size:1.5rem;margin:0 0 8px}h2{font-size:1.08rem;margin:0 0 12px}.muted{color:#577084;font-size:.89rem;line-height:1.65}.card{background:white;border-radius:14px;padding:17px;margin-top:14px;box-shadow:0 3px 12px #12345610}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}label{display:block;font-weight:650;margin-bottom:6px}select,input,button{font:inherit}select,input{width:100%;padding:11px;border:1px solid #b6c8d8;border-radius:9px;background:white;color:#163249}button{padding:11px 15px;border:0;border-radius:9px;background:#075b95;color:white;font-weight:700;cursor:pointer}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tabs button{background:#e6eff7;color:#17456b}.tabs button.active{background:#075b95;color:white}.status{padding:12px;background:#eaf3fa;border-radius:9px;line-height:1.6}.status.error{background:#fff0e7;color:#973e20}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stats div{background:#edf5fc;border-radius:9px;padding:12px}.stats strong{display:block;font-size:1.15rem;color:#075b95;margin-top:6px}.summary{white-space:pre-line;line-height:1.8;background:#f1f6fb;border-radius:9px;padding:13px}.links a{color:#075b95;margin-right:16px}.small{font-size:.82rem}.recommend{background:#087c69}.recommend:disabled{background:#9baeb9;cursor:not-allowed}.recommendation{margin-top:12px;background:#eaf7f2;padding:12px;border-radius:9px;line-height:1.65}.recommendation[hidden]{display:none}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #64bbdc}@media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr)}}
 
 .compare-actions{display:flex;flex-wrap:wrap;gap:9px}.compare-actions button{background:#e6eff7;color:#17456b}.compare-actions button.active{background:#075b95;color:white}.compare-actions button:disabled{opacity:.5;cursor:not-allowed}.results{display:grid;gap:11px;margin-top:14px}.plan{border:1px solid #c8d9e6;border-radius:12px;padding:14px;background:#fff}.plan.best{border-color:#087c69;background:#f1fbf7}.plan h3{margin:0;font-size:1rem}.plan-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.plan-metrics{display:flex;flex-wrap:wrap;gap:8px 15px;margin:10px 0;font-size:.92rem}.plan-lines{white-space:pre-line;line-height:1.75;font-size:.9rem;color:#355469}.plan button{margin-top:10px;background:#087c69}.notice{padding:10px;background:#fff5e6;border-radius:8px;color:#7b4c13;font-size:.9rem}.hidden{display:none!important}.share-preview{width:100%;min-height:230px;resize:vertical;white-space:pre-wrap;line-height:1.7;background:#f1f6fb;border:1px solid #b6c8d8;border-radius:9px;padding:12px;color:#163249}.share-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px}.share-feedback{font-size:.9rem;color:#087c69}.share-feedback.error{color:#973e20}.share-actions button:disabled{background:#9baeb9;cursor:not-allowed}
+
+/* V11: Mobile-first readability and touch ergonomics; V10 application logic unchanged. */
+html{scroll-behavior:smooth;scroll-padding-top:12px}body{overflow-x:hidden}section[id]{scroll-margin-top:12px}
+button,select,input{touch-action:manipulation}button{min-height:44px}select,input{min-height:44px}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #38a8ce;outline-offset:2px}
+.plan,.card,.summary,.status{overflow-wrap:anywhere}.plan-top{flex-wrap:wrap}.plan-lines{overflow-wrap:anywhere}
+.mobile-dock{display:none}.skip-link{position:absolute;left:-9999px;top:8px;z-index:100;background:white;color:#123;padding:10px;border-radius:8px}.skip-link:focus{left:8px}
+@media(max-width:619px){
+ :root{font-size:16px;-webkit-text-size-adjust:100%}
+ .wrap{width:100%;padding:10px 10px calc(90px + env(safe-area-inset-bottom))}
+ header{padding:18px 15px;border-radius:13px}header h1{font-size:1.27rem;line-height:1.4}header>div{font-size:.84rem;line-height:1.55;opacity:.96}
+ .card{padding:15px 13px;margin-top:11px;border-radius:12px}
+ h2{font-size:1.05rem;line-height:1.45}label{font-size:.92rem}
+ .query-time{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .query-time .date-field{grid-column:1/-1}
+ .grid:not(.query-time){grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .grid>*{min-width:0}
+ input,select{font-size:16px;max-width:100%;padding:11px 9px}
+ input[type=date]{min-width:0;display:block;-webkit-appearance:none;appearance:none}
+ .tabs{gap:8px}.tabs button{padding:12px 7px;line-height:1.25}
+ .compare-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .compare-actions button{padding:11px 8px;font-size:.88rem;line-height:1.35;min-width:0}
+ .compare-actions #recommend{grid-column:1/-1}
+ .results{gap:10px}.plan{padding:13px 12px}.plan-top{align-items:flex-start;gap:6px}
+ .plan-top h3{font-size:.97rem;flex:1 1 160px}.plan-top strong{white-space:nowrap;font-size:1rem}
+ .plan-metrics{line-height:1.6;margin:8px 0}.plan-lines{font-size:.86rem;line-height:1.75}
+ .plan button{width:100%;min-height:46px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .stats div{padding:10px;font-size:.83rem;min-width:0}.stats strong{font-size:1rem;overflow-wrap:anywhere}
+ .summary{padding:11px;font-size:.9rem;line-height:1.75}
+ .share-preview{min-height:215px;font-size:16px;line-height:1.6}
+ .share-actions{display:grid;grid-template-columns:1fr;gap:8px}
+ .share-actions button{width:100%;min-height:48px}
+ .share-feedback{line-height:1.5}
+ .links a{display:inline-block;padding:7px 0;margin-right:10px}
+ .mobile-dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;z-index:50;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #cfdeea;box-shadow:0 -3px 15px #143d5922;padding:6px max(8px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right))}
+ .mobile-dock a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:52px;color:#175077;text-decoration:none;font-weight:700;font-size:.76rem;border-radius:9px}
+ .mobile-dock a span:first-child{font-size:1.22rem}.mobile-dock a:active{background:#e6eff7}
+}
+@media(max-width:355px){.wrap{padding-left:7px;padding-right:7px}.card{padding:12px 10px}.grid:not(.query-time){grid-template-columns:1fr}.plan-top h3{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
-<body><main class="wrap">
+<body><a class="skip-link" href="#query">跳至查詢條件</a><main class="wrap">
 <header><h1>🚄 台灣鐵路三段式轉乘查詢</h1><div>去程／返程切換・24 小時出發時間・TDX 指定日期預定班次及成人票價</div></header>
-<section class="card"><h2>查詢條件</h2><div class="tabs" role="group" aria-label="選擇去程或返程"><button id="outbound" class="active" type="button" aria-pressed="true">➡️ 去程</button><button id="inbound" type="button" aria-pressed="false">⬅️ 返程</button></div><div class="grid" style="margin-top:14px"><div><label for="date">搭乘日期</label><input id="date" type="date"></div><div><label for="hour">出發小時（24 小時制）</label><select id="hour"></select></div><div><label for="minute">出發分鐘</label><select id="minute"></select></div></div><p class="muted">出發時間是第一段列車的最早出發時間。選擇第一段後，第二、三段會依實際轉乘時間自動篩選。</p><div class="grid"><div><label id="walk1label" for="walk1">豐富 → 高鐵苗栗（分鐘）</label><input id="walk1" type="number" min="0" max="180" value="15"></div><div><label id="walk2label" for="walk2">高鐵台中 → 新烏日（分鐘）</label><input id="walk2" type="number" min="0" max="180" value="15"></div></div></section>
-<section class="card"><h2>✨ 最佳轉乘方案比較（V10）</h2><p class="muted">自動比較符合指定出發時間、兩次轉乘限制的三段組合。最快抵達依第三段抵達時間排序；最低票價只比較三段票價均已確認的組合。各模式最多顯示三組，點選「套用這組」即可帶入下方車次選單。</p><div class="compare-actions" role="group" aria-label="轉乘方案排序"><button id="sortArrival" type="button" class="active" aria-pressed="true" disabled>🏁 最快抵達 TOP 3</button><button id="sortPrice" type="button" aria-pressed="false" disabled>💰 最低票價 TOP 3</button><button id="recommend" class="recommend" type="button" disabled>✨ 套用最快抵達</button></div><div id="recommendation" class="recommendation" role="status" aria-live="polite" hidden></div><div id="comparison" class="results" aria-live="polite"><p class="muted">正在載入所選日期班次…</p></div></section>
+<section class="card" id="query"><h2>查詢條件</h2><div class="tabs" role="group" aria-label="選擇去程或返程"><button id="outbound" class="active" type="button" aria-pressed="true">➡️ 去程</button><button id="inbound" type="button" aria-pressed="false">⬅️ 返程</button></div><div class="grid query-time" style="margin-top:14px"><div class="date-field"><label for="date">搭乘日期</label><input id="date" type="date"></div><div><label for="hour">出發小時（24 小時制）</label><select id="hour"></select></div><div><label for="minute">出發分鐘</label><select id="minute"></select></div></div><p class="muted">出發時間是第一段列車的最早出發時間。選擇第一段後，第二、三段會依實際轉乘時間自動篩選。</p><div class="grid"><div><label id="walk1label" for="walk1">豐富 → 高鐵苗栗（分鐘）</label><input id="walk1" type="number" min="0" max="180" value="15"></div><div><label id="walk2label" for="walk2">高鐵台中 → 新烏日（分鐘）</label><input id="walk2" type="number" min="0" max="180" value="15"></div></div></section>
+<section class="card" id="plans"><h2>✨ 最佳轉乘方案比較（V11）</h2><p class="muted">自動比較符合指定出發時間、兩次轉乘限制的三段組合。最快抵達依第三段抵達時間排序；最低票價只比較三段票價均已確認的組合。各模式最多顯示三組，點選「套用這組」即可帶入下方車次選單。</p><div class="compare-actions" role="group" aria-label="轉乘方案排序"><button id="sortArrival" type="button" class="active" aria-pressed="true" disabled>🏁 最快抵達 TOP 3</button><button id="sortPrice" type="button" aria-pressed="false" disabled>💰 最低票價 TOP 3</button><button id="recommend" class="recommend" type="button" disabled>✨ 套用最快抵達</button></div><div id="recommendation" class="recommendation" role="status" aria-live="polite" hidden></div><div id="comparison" class="results" aria-live="polite"><p class="muted">正在載入所選日期班次…</p></div></section>
 <section class="card"><h2>自動班次資料</h2><div id="status" class="status" role="status" aria-live="polite">正在載入指定日期的 TDX 預定時刻表…</div><p class="muted small" id="meta"></p><button id="reload" type="button">重新讀取資料</button></section>
 <section class="card"><h2 id="title1">① 台鐵｜竹南 → 豐富</h2><label for="s1">選擇第一段班次</label><select id="s1"></select></section>
 <section class="card"><h2 id="title2">② 高鐵｜苗栗 → 台中</h2><label for="s2">選擇可轉乘班次</label><select id="s2"></select></section>
 <section class="card"><h2 id="title3">③ 台鐵｜新烏日 → 二水</h2><label for="s3">選擇可轉乘班次</label><select id="s3"></select></section>
-<section class="card"><h2>行程摘要</h2><div class="summary" id="summary">正在載入班次…</div><div class="stats" style="margin-top:12px"><div>全程耗時<strong id="duration">—</strong></div><div>兩次轉乘時間合計<strong id="wait">—</strong></div><div>成人全票總額<strong id="fare">—</strong></div><div>抵達時間<strong id="arrival">—</strong></div></div></section>
-<section class="card" id="shareCard"><h2>📋 行程複製分享（V10）</h2><p class="muted">選好三段車次後，可複製完整行程並貼到 LINE、簡訊或記事本。切換日期、方向或車次時，內容會自動更新。</p><label for="sharePreview">行程分享內容</label><textarea id="sharePreview" class="share-preview" readonly aria-label="可複製的完整行程文字" placeholder="請先選擇完整的三段車次"></textarea><div class="share-actions"><button id="copyShare" type="button" disabled>📋 複製行程</button><span id="shareFeedback" class="share-feedback" role="status" aria-live="polite"></span></div><p class="muted small">複製內容為預定時刻表，不包含即時誤點資訊；若手機瀏覽器不支援自動複製，可長按上方文字手動複製。</p></section>
+<section class="card" id="tripSummary"><h2>行程摘要</h2><div class="summary" id="summary">正在載入班次…</div><div class="stats" style="margin-top:12px"><div>全程耗時<strong id="duration">—</strong></div><div>兩次轉乘時間合計<strong id="wait">—</strong></div><div>成人全票總額<strong id="fare">—</strong></div><div>抵達時間<strong id="arrival">—</strong></div></div></section>
+<section class="card" id="shareCard"><h2>📋 行程複製分享（V11）</h2><p class="muted">選好三段車次後，可複製完整行程並貼到 LINE、簡訊或記事本。切換日期、方向或車次時，內容會自動更新。</p><label for="sharePreview">行程分享內容</label><textarea id="sharePreview" class="share-preview" readonly aria-label="可複製的完整行程文字" placeholder="請先選擇完整的三段車次"></textarea><div class="share-actions"><button id="copyShare" type="button" disabled>📋 複製行程</button><span id="shareFeedback" class="share-feedback" role="status" aria-live="polite"></span></div><p class="muted small">複製內容為預定時刻表，不包含即時誤點資訊；若手機瀏覽器不支援自動複製，可長按上方文字手動複製。</p></section>
 <section class="card"><h2>資料來源與注意事項</h2><p class="muted">資料由 GitHub Actions 透過 TDX 產生，屬於預定時刻表，非即時誤點／停駛資訊。票價採成人單程票，高鐵為標準車廂對號座；台鐵依車種比對。未能可靠對應的票價顯示「待確認」，不會任意估算。網站只讀取與所選日期相同的 JSON；未發布日期不會以其他日期班次替代。午夜跨日轉乘需另外核對次日班次。自動推薦僅使用已發布日期內的班次，且不考慮即時誤點、月台距離變動與額外轉乘交通工具。</p><div class="links"><a href="https://www.thsrc.com.tw/" target="_blank" rel="noopener">高鐵官方網站 ↗</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/gobytime" target="_blank" rel="noopener">台鐵官方時刻表 ↗</a></div></section>
 </main>
+<nav class="mobile-dock" aria-label="手機快捷導覽">
+ <a href="#query" aria-label="前往查詢條件"><span aria-hidden="true">📅</span><span>查詢</span></a>
+ <a href="#plans" aria-label="前往前三名轉乘方案"><span aria-hidden="true">🏁</span><span>TOP 3</span></a>
+ <a href="#tripSummary" aria-label="前往行程摘要"><span aria-hidden="true">🚆</span><span>行程</span></a>
+ <a href="#shareCard" aria-label="前往行程分享"><span aria-hidden="true">📋</span><span>分享</span></a>
+</nav>
 <script>
 'use strict';
 const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
