@@ -2,22 +2,23 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>台灣鐵路雙向三段轉乘查詢 V9</title>
+<title>台灣鐵路雙向三段轉乘查詢 V10</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:#edf3f9;color:#163249}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:16px 14px 48px}header{background:linear-gradient(120deg,#113e75,#007d97);color:white;padding:25px 20px;border-radius:16px}h1{font-size:1.5rem;margin:0 0 8px}h2{font-size:1.08rem;margin:0 0 12px}.muted{color:#577084;font-size:.89rem;line-height:1.65}.card{background:white;border-radius:14px;padding:17px;margin-top:14px;box-shadow:0 3px 12px #12345610}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}label{display:block;font-weight:650;margin-bottom:6px}select,input,button{font:inherit}select,input{width:100%;padding:11px;border:1px solid #b6c8d8;border-radius:9px;background:white;color:#163249}button{padding:11px 15px;border:0;border-radius:9px;background:#075b95;color:white;font-weight:700;cursor:pointer}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tabs button{background:#e6eff7;color:#17456b}.tabs button.active{background:#075b95;color:white}.status{padding:12px;background:#eaf3fa;border-radius:9px;line-height:1.6}.status.error{background:#fff0e7;color:#973e20}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stats div{background:#edf5fc;border-radius:9px;padding:12px}.stats strong{display:block;font-size:1.15rem;color:#075b95;margin-top:6px}.summary{white-space:pre-line;line-height:1.8;background:#f1f6fb;border-radius:9px;padding:13px}.links a{color:#075b95;margin-right:16px}.small{font-size:.82rem}.recommend{background:#087c69}.recommend:disabled{background:#9baeb9;cursor:not-allowed}.recommendation{margin-top:12px;background:#eaf7f2;padding:12px;border-radius:9px;line-height:1.65}.recommendation[hidden]{display:none}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #64bbdc}@media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr)}}
 
-.compare-actions{display:flex;flex-wrap:wrap;gap:9px}.compare-actions button{background:#e6eff7;color:#17456b}.compare-actions button.active{background:#075b95;color:white}.compare-actions button:disabled{opacity:.5;cursor:not-allowed}.results{display:grid;gap:11px;margin-top:14px}.plan{border:1px solid #c8d9e6;border-radius:12px;padding:14px;background:#fff}.plan.best{border-color:#087c69;background:#f1fbf7}.plan h3{margin:0;font-size:1rem}.plan-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.plan-metrics{display:flex;flex-wrap:wrap;gap:8px 15px;margin:10px 0;font-size:.92rem}.plan-lines{white-space:pre-line;line-height:1.75;font-size:.9rem;color:#355469}.plan button{margin-top:10px;background:#087c69}.notice{padding:10px;background:#fff5e6;border-radius:8px;color:#7b4c13;font-size:.9rem}.hidden{display:none!important}
+.compare-actions{display:flex;flex-wrap:wrap;gap:9px}.compare-actions button{background:#e6eff7;color:#17456b}.compare-actions button.active{background:#075b95;color:white}.compare-actions button:disabled{opacity:.5;cursor:not-allowed}.results{display:grid;gap:11px;margin-top:14px}.plan{border:1px solid #c8d9e6;border-radius:12px;padding:14px;background:#fff}.plan.best{border-color:#087c69;background:#f1fbf7}.plan h3{margin:0;font-size:1rem}.plan-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.plan-metrics{display:flex;flex-wrap:wrap;gap:8px 15px;margin:10px 0;font-size:.92rem}.plan-lines{white-space:pre-line;line-height:1.75;font-size:.9rem;color:#355469}.plan button{margin-top:10px;background:#087c69}.notice{padding:10px;background:#fff5e6;border-radius:8px;color:#7b4c13;font-size:.9rem}.hidden{display:none!important}.share-preview{width:100%;min-height:230px;resize:vertical;white-space:pre-wrap;line-height:1.7;background:#f1f6fb;border:1px solid #b6c8d8;border-radius:9px;padding:12px;color:#163249}.share-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px}.share-feedback{font-size:.9rem;color:#087c69}.share-feedback.error{color:#973e20}.share-actions button:disabled{background:#9baeb9;cursor:not-allowed}
 </style>
 </head>
 <body><main class="wrap">
 <header><h1>🚄 台灣鐵路三段式轉乘查詢</h1><div>去程／返程切換・24 小時出發時間・TDX 指定日期預定班次及成人票價</div></header>
 <section class="card"><h2>查詢條件</h2><div class="tabs" role="group" aria-label="選擇去程或返程"><button id="outbound" class="active" type="button" aria-pressed="true">➡️ 去程</button><button id="inbound" type="button" aria-pressed="false">⬅️ 返程</button></div><div class="grid" style="margin-top:14px"><div><label for="date">搭乘日期</label><input id="date" type="date"></div><div><label for="hour">出發小時（24 小時制）</label><select id="hour"></select></div><div><label for="minute">出發分鐘</label><select id="minute"></select></div></div><p class="muted">出發時間是第一段列車的最早出發時間。選擇第一段後，第二、三段會依實際轉乘時間自動篩選。</p><div class="grid"><div><label id="walk1label" for="walk1">豐富 → 高鐵苗栗（分鐘）</label><input id="walk1" type="number" min="0" max="180" value="15"></div><div><label id="walk2label" for="walk2">高鐵台中 → 新烏日（分鐘）</label><input id="walk2" type="number" min="0" max="180" value="15"></div></div></section>
-<section class="card"><h2>✨ 最佳轉乘方案比較（V9）</h2><p class="muted">自動比較符合指定出發時間、兩次轉乘限制的三段組合。最快抵達依第三段抵達時間排序；最低票價只比較三段票價均已確認的組合。各模式最多顯示三組，點選「套用這組」即可帶入下方車次選單。</p><div class="compare-actions" role="group" aria-label="轉乘方案排序"><button id="sortArrival" type="button" class="active" aria-pressed="true" disabled>🏁 最快抵達 TOP 3</button><button id="sortPrice" type="button" aria-pressed="false" disabled>💰 最低票價 TOP 3</button><button id="recommend" class="recommend" type="button" disabled>✨ 套用最快抵達</button></div><div id="recommendation" class="recommendation" role="status" aria-live="polite" hidden></div><div id="comparison" class="results" aria-live="polite"><p class="muted">正在載入所選日期班次…</p></div></section>
+<section class="card"><h2>✨ 最佳轉乘方案比較（V10）</h2><p class="muted">自動比較符合指定出發時間、兩次轉乘限制的三段組合。最快抵達依第三段抵達時間排序；最低票價只比較三段票價均已確認的組合。各模式最多顯示三組，點選「套用這組」即可帶入下方車次選單。</p><div class="compare-actions" role="group" aria-label="轉乘方案排序"><button id="sortArrival" type="button" class="active" aria-pressed="true" disabled>🏁 最快抵達 TOP 3</button><button id="sortPrice" type="button" aria-pressed="false" disabled>💰 最低票價 TOP 3</button><button id="recommend" class="recommend" type="button" disabled>✨ 套用最快抵達</button></div><div id="recommendation" class="recommendation" role="status" aria-live="polite" hidden></div><div id="comparison" class="results" aria-live="polite"><p class="muted">正在載入所選日期班次…</p></div></section>
 <section class="card"><h2>自動班次資料</h2><div id="status" class="status" role="status" aria-live="polite">正在載入指定日期的 TDX 預定時刻表…</div><p class="muted small" id="meta"></p><button id="reload" type="button">重新讀取資料</button></section>
 <section class="card"><h2 id="title1">① 台鐵｜竹南 → 豐富</h2><label for="s1">選擇第一段班次</label><select id="s1"></select></section>
 <section class="card"><h2 id="title2">② 高鐵｜苗栗 → 台中</h2><label for="s2">選擇可轉乘班次</label><select id="s2"></select></section>
 <section class="card"><h2 id="title3">③ 台鐵｜新烏日 → 二水</h2><label for="s3">選擇可轉乘班次</label><select id="s3"></select></section>
 <section class="card"><h2>行程摘要</h2><div class="summary" id="summary">正在載入班次…</div><div class="stats" style="margin-top:12px"><div>全程耗時<strong id="duration">—</strong></div><div>兩次轉乘時間合計<strong id="wait">—</strong></div><div>成人全票總額<strong id="fare">—</strong></div><div>抵達時間<strong id="arrival">—</strong></div></div></section>
+<section class="card" id="shareCard"><h2>📋 行程複製分享（V10）</h2><p class="muted">選好三段車次後，可複製完整行程並貼到 LINE、簡訊或記事本。切換日期、方向或車次時，內容會自動更新。</p><label for="sharePreview">行程分享內容</label><textarea id="sharePreview" class="share-preview" readonly aria-label="可複製的完整行程文字" placeholder="請先選擇完整的三段車次"></textarea><div class="share-actions"><button id="copyShare" type="button" disabled>📋 複製行程</button><span id="shareFeedback" class="share-feedback" role="status" aria-live="polite"></span></div><p class="muted small">複製內容為預定時刻表，不包含即時誤點資訊；若手機瀏覽器不支援自動複製，可長按上方文字手動複製。</p></section>
 <section class="card"><h2>資料來源與注意事項</h2><p class="muted">資料由 GitHub Actions 透過 TDX 產生，屬於預定時刻表，非即時誤點／停駛資訊。票價採成人單程票，高鐵為標準車廂對號座；台鐵依車種比對。未能可靠對應的票價顯示「待確認」，不會任意估算。網站只讀取與所選日期相同的 JSON；未發布日期不會以其他日期班次替代。午夜跨日轉乘需另外核對次日班次。自動推薦僅使用已發布日期內的班次，且不考慮即時誤點、月台距離變動與額外轉乘交通工具。</p><div class="links"><a href="https://www.thsrc.com.tw/" target="_blank" rel="noopener">高鐵官方網站 ↗</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/gobytime" target="_blank" rel="noopener">台鐵官方時刻表 ↗</a></div></section>
 </main>
 <script>
@@ -35,17 +36,70 @@ function placeholder(sel,message){sel.replaceChildren(new Option(message,''))}
 function choices(id,list,message){const el=$(id),old=el.value;placeholder(el,message);for(const r of list)el.add(new Option(`${r.trainNo} 次｜${time(r.start)} → ${time(r.end)}`,r.id));if(list.some(x=>x.id===old))el.value=old;return list.find(x=>x.id===el.value)||null}
 function reset(){for(const k of ['duration','wait','fare','arrival'])$(k).textContent='—'}
 function routeData(){const routes=ROUTES[direction];records=routes.map(([key])=>(payload?.routes?.[key]||[]).map((r,i)=>{const start=mins(r.departure),end=mins(r.arrival);return {id:`${key}-${i}`,trainNo:String(r.trainNo),start,end:end<start?end+1440:end,fare:typeof r.fare==='number'&&Number.isFinite(r.fare)?r.fare:null}}).filter(r=>Number.isFinite(r.start)&&Number.isFinite(r.end)).sort((a,b)=>a.start-b.start))}
-function refresh(){reset();if(!valid){['s1','s2','s3'].forEach(k=>placeholder($(k),'目前沒有適用班次'));$('summary').textContent='請先確認所選日期的班次資料已載入。';return}
+function selectedShareText(){
+ if(!valid||!payload)return '';
+ const selected=['s1','s2','s3'].map((id,i)=>records[i].find(r=>r.id===$(id).value));
+ if(selected.some(r=>!r))return '';
+ const [a,b,c]=selected;
+ const route=ROUTES[direction],walk1=Math.max(0,Number($('walk1').value)||0),walk2=Math.max(0,Number($('walk2').value)||0);
+ if(b.start<a.end+walk1||c.start<b.end+walk2)return '';
+ const total=c.end-a.start,wait1=b.start-a.end,wait2=c.start-b.end;
+ const priced=selected.every(r=>Number.isFinite(r.fare));
+ const fare=priced?'NT$ '+selected.reduce((sum,r)=>sum+r.fare,0):'部分票價待確認';
+ const lines=[
+  '🚆 台灣鐵路三段轉乘行程',
+  '搭乘日期：'+$('date').value,
+  '方向：'+(direction==='outbound'?'去程（竹南 → 二水）':'返程（二水 → 竹南）'),
+  '',
+  ...selected.map((r,i)=>`${i+1}. （${route[i][1]==='台鐵'?'台':'高'} ${r.trainNo}）${route[i][2]} ${time(r.start)} → ${route[i][3]} ${time(r.end)}｜${Number.isFinite(r.fare)?'NT$ '+r.fare:'票價待確認'}`),
+  '',
+  `第一次轉乘：${wait1} 分鐘（預留步行 ${walk1} 分鐘）`,
+  `第二次轉乘：${wait2} 分鐘（預留步行 ${walk2} 分鐘）`,
+  `出發時間：${time(a.start)}`,
+  `抵達時間：${time(c.end)}`,
+  `全程耗時：${Math.floor(total/60)} 小時 ${total%60} 分`,
+  `成人全票總額：${fare}`,
+  '',
+  '資料為預定時刻表，實際搭車前請再確認台鐵及高鐵官方資訊。'
+ ];
+ return lines.join('\n');
+}
+function updateShare(){
+ const text=selectedShareText();
+ $('sharePreview').value=text;
+ $('sharePreview').placeholder=text?'':'請先選擇完整的三段車次';
+ $('copyShare').disabled=!text;
+ $('shareFeedback').textContent='';
+ $('shareFeedback').classList.remove('error');
+}
+async function copyShare(){
+ const text=selectedShareText();
+ if(!text)return;
+ const feedback=$('shareFeedback');
+ try{
+  if(navigator.clipboard?.writeText&&window.isSecureContext){
+   await navigator.clipboard.writeText(text);
+  }else{
+   const preview=$('sharePreview');preview.focus();preview.select();preview.setSelectionRange(0,preview.value.length);
+   if(!document.execCommand('copy'))throw new Error('clipboard not available');
+  }
+  feedback.textContent='✓ 已複製，可貼到 LINE 或其他應用程式';feedback.classList.remove('error');
+ }catch(e){
+  const preview=$('sharePreview');preview.focus();preview.select();preview.setSelectionRange(0,preview.value.length);
+  feedback.textContent='無法自動複製，請手動選取文字後複製';feedback.classList.add('error');
+ }
+}
+function refresh(){reset();updateShare();if(!valid){['s1','s2','s3'].forEach(k=>placeholder($(k),'目前沒有適用班次'));$('summary').textContent='請先確認所選日期的班次資料已載入。';updateShare();return}
  const earliest=Number($('hour').value)*60+Number($('minute').value),w1=Math.max(0,Number($('walk1').value)||0),w2=Math.max(0,Number($('walk2').value)||0);
  const a=choices('s1',records[0].filter(r=>r.start>=earliest),'請選擇第一段班次');
  const b=choices('s2',a?records[1].filter(r=>r.start>=a.end+w1):[],'請先選擇第一段');
  const c=choices('s3',b?records[2].filter(r=>r.start>=b.end+w2):[],'請先選擇第二段');
- if(!a||!b||!c){$('summary').textContent='請依序選擇三段列車。若無班次，可能是時間不足、班次已結束，或跨日班次未包含在當日資料中。';return}
+ if(!a||!b||!c){$('summary').textContent='請依序選擇三段列車。若無班次，可能是時間不足、班次已結束，或跨日班次未包含在當日資料中。';updateShare();return}
  const route=ROUTES[direction],total=c.end-a.start,wait1=b.start-a.end,wait2=c.start-b.end;
  $('summary').textContent=[a,b,c].map((r,i)=>`${i+1}. ${route[i][1]} ${r.trainNo} 次｜${route[i][2]} ${time(r.start)} → ${route[i][3]} ${time(r.end)}`).join('\n')+`\n\n第一次轉乘：${wait1} 分鐘（含預留步行 ${w1} 分鐘）\n第二次轉乘：${wait2} 分鐘（含預留步行 ${w2} 分鐘）`;
  const fareRows=[a,b,c].map((r,i)=>`${route[i][1]} ${r.trainNo} 次：${Number.isFinite(r.fare)?'NT$ '+r.fare:'票價待確認'}`);
  $('summary').textContent+='\n\n成人單程票價：\n'+fareRows.join('\n');
- $('duration').textContent=`${Math.floor(total/60)} 小時 ${total%60} 分`;$('wait').textContent=`${wait1+wait2} 分`;$('fare').textContent=[a,b,c].every(r=>Number.isFinite(r.fare))?'NT$ '+[a,b,c].reduce((n,r)=>n+r.fare,0):'部分票價待確認';$('arrival').textContent=time(c.end)
+ $('duration').textContent=`${Math.floor(total/60)} 小時 ${total%60} 分`;$('wait').textContent=`${wait1+wait2} 分`;$('fare').textContent=[a,b,c].every(r=>Number.isFinite(r.fare))?'NT$ '+[a,b,c].reduce((n,r)=>n+r.fare,0):'部分票價待確認';$('arrival').textContent=time(c.end);updateShare()
 }
 function comparePlans(){
  if(!valid)return [];
@@ -164,5 +218,5 @@ async function load(){
 for(let h=0;h<24;h++)$('hour').add(new Option(pad(h),pad(h)));for(let m=0;m<60;m++)$('minute').add(new Option(pad(m),pad(m)));$('hour').value='17';$('minute').value='00';setDateLimits();
 for(const k of ['outbound','inbound'])$(k).addEventListener('click',()=>{direction=k;display()});
 for(const k of ['hour','minute','walk1','walk2'])$(k).addEventListener('change',()=>{$('recommendation').hidden=true;refresh();recompute()});for(const k of ['s1','s2','s3'])$(k).addEventListener('change',()=>{$('recommendation').hidden=true;refresh()});for(const [id,mode] of [['sortArrival','arrival'],['sortPrice','price']])$(id).addEventListener('click',()=>{sortMode=mode;renderComparison()});$('recommend').addEventListener('click',recommend);
-$('date').addEventListener('change',load);$('reload').addEventListener('click',load);load();
+$('copyShare').addEventListener('click',copyShare);$('date').addEventListener('change',()=>{updateShare();load()});$('reload').addEventListener('click',load);load();
 </script></body></html>
