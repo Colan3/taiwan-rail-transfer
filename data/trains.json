@@ -1,6 +1,6 @@
 {
   "date": "2026-10-17",
-  "updatedAt": "2026-10-17T10:46:28+08:00",
+  "updatedAt": "2026-10-17T19:37:38+08:00",
   "source": "TDX daily timetable and ODFare (scheduled, not real-time)",
   "farePolicy": "Adult one-way; THSR standard reserved; TRA matched by explicit non-discounted adult ticket type and train category",
   "routes": {
