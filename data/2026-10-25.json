@@ -1,0 +1,1973 @@
+{
+  "date": "2026-10-25",
+  "updatedAt": "2026-10-17T20:30:10+08:00",
+  "source": "TDX date-specific scheduled timetable and ODFare (not real-time)",
+  "farePolicy": "Adult one-way; THSR standard reserved; TRA explicit fare categories",
+  "routes": {
+    "tra_1": [
+      {
+        "trainNo": "2103",
+        "departure": "05:27",
+        "arrival": "05:36",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3157",
+        "departure": "05:42",
+        "arrival": "05:51",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2113",
+        "departure": "06:10",
+        "arrival": "06:19",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1105",
+        "departure": "06:45",
+        "arrival": "06:54",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2123",
+        "departure": "07:07",
+        "arrival": "07:16",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1107",
+        "departure": "07:37",
+        "arrival": "07:46",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2133",
+        "departure": "08:03",
+        "arrival": "08:12",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1117",
+        "departure": "08:27",
+        "arrival": "08:36",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2143",
+        "departure": "09:02",
+        "arrival": "09:11",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1127",
+        "departure": "09:34",
+        "arrival": "09:43",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2153",
+        "departure": "10:07",
+        "arrival": "10:16",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1137",
+        "departure": "10:35",
+        "arrival": "10:44",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2163",
+        "departure": "11:02",
+        "arrival": "11:11",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1147",
+        "departure": "11:45",
+        "arrival": "11:54",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2173",
+        "departure": "11:56",
+        "arrival": "12:05",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1157",
+        "departure": "12:41",
+        "arrival": "12:51",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2183",
+        "departure": "13:03",
+        "arrival": "13:12",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1167",
+        "departure": "13:36",
+        "arrival": "13:45",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2193",
+        "departure": "13:57",
+        "arrival": "14:07",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1177",
+        "departure": "14:33",
+        "arrival": "14:42",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2203",
+        "departure": "14:55",
+        "arrival": "15:04",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1187",
+        "departure": "15:29",
+        "arrival": "15:39",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2213",
+        "departure": "15:56",
+        "arrival": "16:05",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1197",
+        "departure": "16:34",
+        "arrival": "16:43",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2223",
+        "departure": "17:20",
+        "arrival": "17:29",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1207",
+        "departure": "17:34",
+        "arrival": "17:43",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2233",
+        "departure": "18:03",
+        "arrival": "18:12",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1217",
+        "departure": "18:34",
+        "arrival": "18:43",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2237",
+        "departure": "18:40",
+        "arrival": "18:49",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2243",
+        "departure": "19:02",
+        "arrival": "19:11",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1227",
+        "departure": "19:41",
+        "arrival": "19:50",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2253",
+        "departure": "19:58",
+        "arrival": "20:08",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1237",
+        "departure": "20:46",
+        "arrival": "20:55",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2263",
+        "departure": "21:04",
+        "arrival": "21:13",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1247",
+        "departure": "21:35",
+        "arrival": "21:45",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2275",
+        "departure": "22:20",
+        "arrival": "22:29",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1257",
+        "departure": "22:40",
+        "arrival": "22:49",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1265",
+        "departure": "23:10",
+        "arrival": "23:19",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1267",
+        "departure": "23:37",
+        "arrival": "23:46",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      }
+    ],
+    "thsr": [
+      {
+        "trainNo": "0803",
+        "departure": "07:13",
+        "arrival": "07:30",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0805",
+        "departure": "07:58",
+        "arrival": "08:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1505",
+        "departure": "08:25",
+        "arrival": "08:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0809",
+        "departure": "08:58",
+        "arrival": "09:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1509",
+        "departure": "09:25",
+        "arrival": "09:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0813",
+        "departure": "09:58",
+        "arrival": "10:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1513",
+        "departure": "10:25",
+        "arrival": "10:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0817",
+        "departure": "10:58",
+        "arrival": "11:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0821",
+        "departure": "11:58",
+        "arrival": "12:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0825",
+        "departure": "12:58",
+        "arrival": "13:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0829",
+        "departure": "13:58",
+        "arrival": "14:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0833",
+        "departure": "14:58",
+        "arrival": "15:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1533",
+        "departure": "15:25",
+        "arrival": "15:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0837",
+        "departure": "15:58",
+        "arrival": "16:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1537",
+        "departure": "16:25",
+        "arrival": "16:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0841",
+        "departure": "16:58",
+        "arrival": "17:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1541",
+        "departure": "17:25",
+        "arrival": "17:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0845",
+        "departure": "17:58",
+        "arrival": "18:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1545",
+        "departure": "18:25",
+        "arrival": "18:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0849",
+        "departure": "18:58",
+        "arrival": "19:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1549",
+        "departure": "19:25",
+        "arrival": "19:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0853",
+        "departure": "19:58",
+        "arrival": "20:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1553",
+        "departure": "20:25",
+        "arrival": "20:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0857",
+        "departure": "20:58",
+        "arrival": "21:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0861",
+        "departure": "21:58",
+        "arrival": "22:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1563",
+        "departure": "22:52",
+        "arrival": "23:10",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0565",
+        "departure": "23:12",
+        "arrival": "23:29",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0567",
+        "departure": "23:43",
+        "arrival": "23:59",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      }
+    ],
+    "tra_2": [
+      {
+        "trainNo": "3147",
+        "departure": "06:02",
+        "arrival": "06:59",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3005",
+        "departure": "06:12",
+        "arrival": "06:52",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2103",
+        "departure": "06:52",
+        "arrival": "07:46",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3157",
+        "departure": "07:14",
+        "arrival": "08:06",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2113",
+        "departure": "07:35",
+        "arrival": "08:30",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3167",
+        "departure": "08:16",
+        "arrival": "09:04",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2123",
+        "departure": "08:43",
+        "arrival": "09:39",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3177",
+        "departure": "09:13",
+        "arrival": "10:01",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2133",
+        "departure": "09:42",
+        "arrival": "10:37",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3187",
+        "departure": "10:07",
+        "arrival": "10:57",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2143",
+        "departure": "10:39",
+        "arrival": "11:28",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3197",
+        "departure": "11:00",
+        "arrival": "11:47",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2153",
+        "departure": "11:38",
+        "arrival": "12:32",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3207",
+        "departure": "12:09",
+        "arrival": "12:58",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2163",
+        "departure": "12:40",
+        "arrival": "13:28",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3217",
+        "departure": "12:58",
+        "arrival": "13:53",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2173",
+        "departure": "13:34",
+        "arrival": "14:22",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3227",
+        "departure": "13:57",
+        "arrival": "14:53",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2183",
+        "departure": "14:44",
+        "arrival": "15:33",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3237",
+        "departure": "15:12",
+        "arrival": "16:01",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2193",
+        "departure": "15:31",
+        "arrival": "16:24",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3247",
+        "departure": "15:50",
+        "arrival": "16:46",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3029",
+        "departure": "16:04",
+        "arrival": "16:41",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2203",
+        "departure": "16:34",
+        "arrival": "17:22",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3257",
+        "departure": "16:57",
+        "arrival": "17:58",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3035",
+        "departure": "17:13",
+        "arrival": "17:53",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2213",
+        "departure": "17:35",
+        "arrival": "18:31",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3267",
+        "departure": "18:02",
+        "arrival": "18:50",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2019",
+        "departure": "18:33",
+        "arrival": "19:14",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "3277",
+        "departure": "18:43",
+        "arrival": "19:31",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2223",
+        "departure": "18:57",
+        "arrival": "20:00",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2027",
+        "departure": "19:25",
+        "arrival": "20:06",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2233",
+        "departure": "19:38",
+        "arrival": "20:27",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3287",
+        "departure": "20:02",
+        "arrival": "20:51",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "277",
+        "departure": "20:32",
+        "arrival": "21:15",
+        "fare": null,
+        "operator": "TRA",
+        "trainTypeCode": "3",
+        "trainTypeName": "自強(推拉式自強號且有自行車車廂)"
+      },
+      {
+        "trainNo": "2243",
+        "departure": "20:44",
+        "arrival": "21:36",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3297",
+        "departure": "21:09",
+        "arrival": "21:57",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2253",
+        "departure": "21:35",
+        "arrival": "22:24",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2257",
+        "departure": "22:01",
+        "arrival": "22:50",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2263",
+        "departure": "22:34",
+        "arrival": "23:22",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2269",
+        "departure": "23:29",
+        "arrival": "00:18",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      }
+    ],
+    "return_tra_1": [
+      {
+        "trainNo": "2120",
+        "departure": "05:12",
+        "arrival": "06:00",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2124",
+        "departure": "05:40",
+        "arrival": "06:33",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2128",
+        "departure": "06:04",
+        "arrival": "06:52",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2134",
+        "departure": "06:21",
+        "arrival": "07:09",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "270",
+        "departure": "06:33",
+        "arrival": "07:14",
+        "fare": null,
+        "operator": "TRA",
+        "trainTypeCode": "3",
+        "trainTypeName": "自強(推拉式自強號且有自行車車廂)"
+      },
+      {
+        "trainNo": "2138",
+        "departure": "06:47",
+        "arrival": "07:42",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2004",
+        "departure": "07:19",
+        "arrival": "08:02",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2144",
+        "departure": "07:33",
+        "arrival": "08:22",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3118",
+        "departure": "08:03",
+        "arrival": "08:52",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2154",
+        "departure": "08:34",
+        "arrival": "09:29",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3128",
+        "departure": "09:08",
+        "arrival": "09:58",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3132",
+        "departure": "09:23",
+        "arrival": "10:19",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3138",
+        "departure": "10:11",
+        "arrival": "11:00",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2174",
+        "departure": "10:37",
+        "arrival": "11:30",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3148",
+        "departure": "11:03",
+        "arrival": "11:57",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2016",
+        "departure": "11:32",
+        "arrival": "12:12",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2184",
+        "departure": "11:39",
+        "arrival": "12:26",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3158",
+        "departure": "12:08",
+        "arrival": "13:02",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2194",
+        "departure": "12:32",
+        "arrival": "13:19",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3168",
+        "departure": "12:56",
+        "arrival": "13:49",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2204",
+        "departure": "13:27",
+        "arrival": "14:24",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3178",
+        "departure": "14:17",
+        "arrival": "15:04",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2214",
+        "departure": "14:26",
+        "arrival": "15:16",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3010",
+        "departure": "14:49",
+        "arrival": "15:31",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "3188",
+        "departure": "14:57",
+        "arrival": "15:46",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2224",
+        "departure": "15:15",
+        "arrival": "16:12",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3198",
+        "departure": "15:58",
+        "arrival": "16:46",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2234",
+        "departure": "16:13",
+        "arrival": "17:11",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3208",
+        "departure": "16:56",
+        "arrival": "17:49",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2042",
+        "departure": "17:00",
+        "arrival": "17:41",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "2244",
+        "departure": "17:19",
+        "arrival": "18:20",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3218",
+        "departure": "18:03",
+        "arrival": "18:56",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2254",
+        "departure": "18:42",
+        "arrival": "19:31",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3228",
+        "departure": "18:54",
+        "arrival": "19:58",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2264",
+        "departure": "19:32",
+        "arrival": "20:27",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2072",
+        "departure": "19:57",
+        "arrival": "20:40",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "10",
+        "trainTypeName": "區間快"
+      },
+      {
+        "trainNo": "3238",
+        "departure": "20:02",
+        "arrival": "21:03",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2274",
+        "departure": "20:44",
+        "arrival": "21:33",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3248",
+        "departure": "21:13",
+        "arrival": "22:09",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3252",
+        "departure": "21:44",
+        "arrival": "22:32",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3262",
+        "departure": "22:39",
+        "arrival": "23:25",
+        "fare": 90,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      }
+    ],
+    "return_thsr": [
+      {
+        "trainNo": "0502",
+        "departure": "06:05",
+        "arrival": "06:23",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0508",
+        "departure": "06:52",
+        "arrival": "07:10",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0802",
+        "departure": "07:25",
+        "arrival": "07:44",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1514",
+        "departure": "08:04",
+        "arrival": "08:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0806",
+        "departure": "08:36",
+        "arrival": "08:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1518",
+        "departure": "09:04",
+        "arrival": "09:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0810",
+        "departure": "09:36",
+        "arrival": "09:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1522",
+        "departure": "10:04",
+        "arrival": "10:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0814",
+        "departure": "10:36",
+        "arrival": "10:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0818",
+        "departure": "11:36",
+        "arrival": "11:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0822",
+        "departure": "12:36",
+        "arrival": "12:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1534",
+        "departure": "13:04",
+        "arrival": "13:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0826",
+        "departure": "13:36",
+        "arrival": "13:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1538",
+        "departure": "14:04",
+        "arrival": "14:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0830",
+        "departure": "14:36",
+        "arrival": "14:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1542",
+        "departure": "15:04",
+        "arrival": "15:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0834",
+        "departure": "15:36",
+        "arrival": "15:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1546",
+        "departure": "16:04",
+        "arrival": "16:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0838",
+        "departure": "16:36",
+        "arrival": "16:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1550",
+        "departure": "17:04",
+        "arrival": "17:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0842",
+        "departure": "17:36",
+        "arrival": "17:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1554",
+        "departure": "18:04",
+        "arrival": "18:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0846",
+        "departure": "18:36",
+        "arrival": "18:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1558",
+        "departure": "19:04",
+        "arrival": "19:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0850",
+        "departure": "19:36",
+        "arrival": "19:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1562",
+        "departure": "20:04",
+        "arrival": "20:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0854",
+        "departure": "20:36",
+        "arrival": "20:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1566",
+        "departure": "21:04",
+        "arrival": "21:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0858",
+        "departure": "21:36",
+        "arrival": "21:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "0862",
+        "departure": "22:40",
+        "arrival": "22:59",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      }
+    ],
+    "return_tra_2": [
+      {
+        "trainNo": "1128",
+        "departure": "05:20",
+        "arrival": "05:30",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2114",
+        "departure": "06:22",
+        "arrival": "06:32",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1138",
+        "departure": "06:49",
+        "arrival": "06:59",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2120",
+        "departure": "07:19",
+        "arrival": "07:29",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1148",
+        "departure": "07:29",
+        "arrival": "07:39",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2124",
+        "departure": "07:47",
+        "arrival": "07:57",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1158",
+        "departure": "08:15",
+        "arrival": "08:25",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2134",
+        "departure": "08:38",
+        "arrival": "08:48",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1168",
+        "departure": "09:14",
+        "arrival": "09:24",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2144",
+        "departure": "09:48",
+        "arrival": "09:58",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1178",
+        "departure": "10:19",
+        "arrival": "10:29",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2154",
+        "departure": "10:49",
+        "arrival": "10:59",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1188",
+        "departure": "11:18",
+        "arrival": "11:28",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3132",
+        "departure": "11:42",
+        "arrival": "11:52",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1198",
+        "departure": "12:16",
+        "arrival": "12:26",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2174",
+        "departure": "12:54",
+        "arrival": "13:03",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1208",
+        "departure": "13:18",
+        "arrival": "13:28",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2184",
+        "departure": "13:45",
+        "arrival": "13:55",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1218",
+        "departure": "14:23",
+        "arrival": "14:33",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2194",
+        "departure": "14:36",
+        "arrival": "14:46",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1228",
+        "departure": "15:11",
+        "arrival": "15:21",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2204",
+        "departure": "15:47",
+        "arrival": "15:56",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1238",
+        "departure": "16:15",
+        "arrival": "16:25",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2214",
+        "departure": "16:40",
+        "arrival": "16:50",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1248",
+        "departure": "17:22",
+        "arrival": "17:32",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2224",
+        "departure": "17:41",
+        "arrival": "17:51",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1258",
+        "departure": "18:13",
+        "arrival": "18:23",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2234",
+        "departure": "18:31",
+        "arrival": "18:41",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1268",
+        "departure": "19:05",
+        "arrival": "19:15",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2244",
+        "departure": "19:46",
+        "arrival": "19:56",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1278",
+        "departure": "20:22",
+        "arrival": "20:32",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2254",
+        "departure": "20:49",
+        "arrival": "20:59",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1288",
+        "departure": "21:33",
+        "arrival": "21:43",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2264",
+        "departure": "21:55",
+        "arrival": "22:05",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "1298",
+        "departure": "22:16",
+        "arrival": "22:26",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "2274",
+        "departure": "22:49",
+        "arrival": "22:59",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3248",
+        "departure": "23:22",
+        "arrival": "23:32",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      },
+      {
+        "trainNo": "3252",
+        "departure": "23:50",
+        "arrival": "00:00",
+        "fare": 25,
+        "operator": "TRA",
+        "trainTypeCode": "6",
+        "trainTypeName": "區間"
+      }
+    ]
+  }
+}
