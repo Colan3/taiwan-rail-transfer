@@ -1,0 +1,720 @@
+{
+  "date": "2026-10-17",
+  "updatedAt": "2026-10-17T09:52:47+08:00",
+  "source": "TDX daily timetable (scheduled, not real-time)",
+  "routes": {
+    "tra_1": [
+      {
+        "trainNo": "2103",
+        "departure": "05:27",
+        "arrival": "05:36",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3157",
+        "departure": "05:42",
+        "arrival": "05:51",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2113",
+        "departure": "06:10",
+        "arrival": "06:19",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1105",
+        "departure": "06:45",
+        "arrival": "06:54",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2123",
+        "departure": "07:07",
+        "arrival": "07:16",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1107",
+        "departure": "07:37",
+        "arrival": "07:46",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2133",
+        "departure": "08:03",
+        "arrival": "08:12",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1117",
+        "departure": "08:27",
+        "arrival": "08:36",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2143",
+        "departure": "09:02",
+        "arrival": "09:11",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1127",
+        "departure": "09:34",
+        "arrival": "09:43",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2153",
+        "departure": "10:07",
+        "arrival": "10:16",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1137",
+        "departure": "10:35",
+        "arrival": "10:44",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2163",
+        "departure": "11:02",
+        "arrival": "11:11",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1147",
+        "departure": "11:45",
+        "arrival": "11:54",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2173",
+        "departure": "11:56",
+        "arrival": "12:05",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1157",
+        "departure": "12:41",
+        "arrival": "12:51",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2183",
+        "departure": "13:03",
+        "arrival": "13:12",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1167",
+        "departure": "13:36",
+        "arrival": "13:45",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2193",
+        "departure": "13:57",
+        "arrival": "14:07",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1177",
+        "departure": "14:33",
+        "arrival": "14:42",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2203",
+        "departure": "14:55",
+        "arrival": "15:04",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1187",
+        "departure": "15:29",
+        "arrival": "15:39",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2213",
+        "departure": "15:56",
+        "arrival": "16:05",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1197",
+        "departure": "16:34",
+        "arrival": "16:43",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2223",
+        "departure": "17:20",
+        "arrival": "17:29",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1207",
+        "departure": "17:34",
+        "arrival": "17:43",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2233",
+        "departure": "18:03",
+        "arrival": "18:12",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1217",
+        "departure": "18:34",
+        "arrival": "18:43",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2237",
+        "departure": "18:40",
+        "arrival": "18:49",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2243",
+        "departure": "19:02",
+        "arrival": "19:11",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1227",
+        "departure": "19:41",
+        "arrival": "19:50",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2253",
+        "departure": "19:58",
+        "arrival": "20:08",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1237",
+        "departure": "20:46",
+        "arrival": "20:55",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2263",
+        "departure": "21:04",
+        "arrival": "21:13",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1247",
+        "departure": "21:35",
+        "arrival": "21:45",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2275",
+        "departure": "22:20",
+        "arrival": "22:29",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1257",
+        "departure": "22:40",
+        "arrival": "22:49",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1265",
+        "departure": "23:10",
+        "arrival": "23:19",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "1267",
+        "departure": "23:37",
+        "arrival": "23:46",
+        "fare": null,
+        "operator": "TRA"
+      }
+    ],
+    "thsr": [
+      {
+        "trainNo": "0803",
+        "departure": "07:13",
+        "arrival": "07:30",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0805",
+        "departure": "07:58",
+        "arrival": "08:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "1505",
+        "departure": "08:25",
+        "arrival": "08:42",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0809",
+        "departure": "08:58",
+        "arrival": "09:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "1509",
+        "departure": "09:25",
+        "arrival": "09:42",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0813",
+        "departure": "09:58",
+        "arrival": "10:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "1513",
+        "departure": "10:25",
+        "arrival": "10:42",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0817",
+        "departure": "10:58",
+        "arrival": "11:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0821",
+        "departure": "11:58",
+        "arrival": "12:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0825",
+        "departure": "12:58",
+        "arrival": "13:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0829",
+        "departure": "13:58",
+        "arrival": "14:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0833",
+        "departure": "14:58",
+        "arrival": "15:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0837",
+        "departure": "15:58",
+        "arrival": "16:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0841",
+        "departure": "16:58",
+        "arrival": "17:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0845",
+        "departure": "17:58",
+        "arrival": "18:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0849",
+        "departure": "18:58",
+        "arrival": "19:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0853",
+        "departure": "19:58",
+        "arrival": "20:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0857",
+        "departure": "20:58",
+        "arrival": "21:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0861",
+        "departure": "21:58",
+        "arrival": "22:15",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0565",
+        "departure": "23:12",
+        "arrival": "23:29",
+        "fare": null,
+        "operator": "THSR"
+      },
+      {
+        "trainNo": "0567",
+        "departure": "23:43",
+        "arrival": "23:59",
+        "fare": null,
+        "operator": "THSR"
+      }
+    ],
+    "tra_2": [
+      {
+        "trainNo": "3147",
+        "departure": "06:02",
+        "arrival": "06:59",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3005",
+        "departure": "06:12",
+        "arrival": "06:52",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2103",
+        "departure": "06:52",
+        "arrival": "07:46",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3157",
+        "departure": "07:14",
+        "arrival": "08:06",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2113",
+        "departure": "07:35",
+        "arrival": "08:30",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3167",
+        "departure": "08:16",
+        "arrival": "09:04",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2123",
+        "departure": "08:43",
+        "arrival": "09:39",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3177",
+        "departure": "09:13",
+        "arrival": "10:01",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2133",
+        "departure": "09:42",
+        "arrival": "10:37",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3187",
+        "departure": "10:07",
+        "arrival": "10:57",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2143",
+        "departure": "10:39",
+        "arrival": "11:28",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3197",
+        "departure": "11:00",
+        "arrival": "11:47",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2153",
+        "departure": "11:38",
+        "arrival": "12:32",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3207",
+        "departure": "12:09",
+        "arrival": "12:58",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2163",
+        "departure": "12:40",
+        "arrival": "13:28",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3217",
+        "departure": "12:58",
+        "arrival": "13:53",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2173",
+        "departure": "13:34",
+        "arrival": "14:22",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3227",
+        "departure": "13:57",
+        "arrival": "14:53",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2183",
+        "departure": "14:44",
+        "arrival": "15:33",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3237",
+        "departure": "15:12",
+        "arrival": "16:01",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2193",
+        "departure": "15:31",
+        "arrival": "16:24",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3247",
+        "departure": "15:50",
+        "arrival": "16:46",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3029",
+        "departure": "16:04",
+        "arrival": "16:41",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2203",
+        "departure": "16:34",
+        "arrival": "17:22",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3257",
+        "departure": "16:57",
+        "arrival": "17:58",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3035",
+        "departure": "17:13",
+        "arrival": "17:53",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2213",
+        "departure": "17:35",
+        "arrival": "18:31",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3267",
+        "departure": "18:02",
+        "arrival": "18:50",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2023",
+        "departure": "18:33",
+        "arrival": "19:14",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3277",
+        "departure": "18:43",
+        "arrival": "19:31",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2223",
+        "departure": "18:57",
+        "arrival": "20:00",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2027",
+        "departure": "19:25",
+        "arrival": "20:06",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2233",
+        "departure": "19:38",
+        "arrival": "20:27",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3287",
+        "departure": "20:02",
+        "arrival": "20:51",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "277",
+        "departure": "20:32",
+        "arrival": "21:15",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2243",
+        "departure": "20:44",
+        "arrival": "21:36",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "3297",
+        "departure": "21:09",
+        "arrival": "21:57",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2253",
+        "departure": "21:35",
+        "arrival": "22:24",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2257",
+        "departure": "22:01",
+        "arrival": "22:50",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2263",
+        "departure": "22:34",
+        "arrival": "23:22",
+        "fare": null,
+        "operator": "TRA"
+      },
+      {
+        "trainNo": "2269",
+        "departure": "23:29",
+        "arrival": "00:18",
+        "fare": null,
+        "operator": "TRA"
+      }
+    ]
+  }
+}
