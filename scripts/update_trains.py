@@ -47,7 +47,7 @@ def fare_shape_diagnostic(operator, items):
     fares = first.get('Fares') or []
     print(f'DIAG {operator}: records={len(items)}, itemKeys={sorted(first.keys())}, '
           f'fareCount={len(fares)}')
-    for f in fares[:8]:
+    for f in fares[:]:
         safe = {k: f.get(k) for k in ('TicketType', 'FareClass', 'CabinClass',
                                      'Price', 'TicketTypeName', 'FareClassName') if k in f}
         print(f'DIAG {operator} fareFields: {json.dumps(safe, ensure_ascii=False)}')
@@ -129,26 +129,51 @@ def station_ids(operator, headers):
 
 
 def adult_oneway_fares(operator, origin_id, destination_id, headers):
-    # ODFare/{origin}/to/{destination} is a route-specific TDX v2 endpoint.
+    """Read operator-specific adult fares; never infer fares from a cheaper category."""
     items = api_list(f'{operator}/ODFare/{origin_id}/to/{destination_id}', headers)
     fare_shape_diagnostic(operator, items)
     options = []
     for item in items:
         for f in item.get('Fares', []):
-            # Keep existing conservative policy until actual TDX schema is verified.
-            if str(f.get('TicketType')) != '1' or str(f.get('FareClass')) != '1':
-                continue
-            if operator == 'THSR' and str(f.get('CabinClass')) != '1':
-                continue  # Standard reserved seat, no discounts
             price = f.get('Price')
             if not isinstance(price, (int, float)) or isinstance(price, bool) or price <= 0:
                 continue
-            options.append({'price': int(price),
-                            'trainType': str(item.get('TrainType', f.get('TrainType', ''))),
-                            'trainTypeCode': str(item.get('TrainTypeCode', '')),
-                            'trainTypeName': (item.get('TrainTypeName') or {}).get('Zh_tw', '')
-                            if isinstance(item.get('TrainTypeName'), dict) else str(item.get('TrainTypeName') or '')})
+            ticket_type = str(f.get('TicketType', '')).strip()
+            if operator == 'THSR':
+                if (ticket_type, str(f.get('FareClass')), str(f.get('CabinClass'))) != ('1', '1', '1'):
+                    continue
+                category = 'THSR_STANDARD'
+            else:
+                # TDX TRA TicketType uses Chinese text, unlike THSR numeric fields.
+                # These are explicitly non-discounted adult codes only.
+                category = {
+                    '成自': '自強',
+                    '成莒': '莒光',
+                    '成區': '區間',
+                    '成復': '復興',
+                    '成普': '普快',
+                }.get(ticket_type)
+                if category is None:
+                    continue
+            options.append({'price': int(price), 'category': category, 'ticketType': ticket_type})
     return options
+
+
+def tra_category(train):
+    """Only map train types with a clear ordinary adult fare class."""
+    name = str(train.get('trainTypeName') or '').strip()
+    if name in ('區間', '區間車', '區間快', '區間快車'):
+        return '區間'
+    if name in ('莒光', '莒光號'):
+        return '莒光'
+    if name in ('自強', '自強號'):
+        return '自強'
+    if name in ('復興', '復興號'):
+        return '復興'
+    if name in ('普快', '普快車'):
+        return '普快'
+    # Do not silently assume newer premium trains use the ordinary Tze-Chiang fare.
+    return None
 
 
 def assign_fares(routes, headers):
@@ -162,17 +187,11 @@ def assign_fares(routes, headers):
             if not fares:
                 raise ValueError('No adult one-way fare found')
             for train in routes[key]:
-                matches = fares
                 if operator == 'TRA':
-                    code, name = train.get('trainTypeCode', ''), train.get('trainTypeName', '')
-                    # Match category by TDX train type code or name, not by guessing
-                    # that all TRA trains cost the same.
-                    matches = [f for f in fares if (code and f['trainTypeCode'] == code)
-                               or (name and f['trainTypeName'] == name)]
-                    if not matches:
-                        # Some TRA ODFare datasets only publish broad fare types.
-                        # Do not silently map those to specific train categories.
-                        matches = []
+                    category = tra_category(train)
+                    matches = [f for f in fares if f['category'] == category] if category else []
+                else:
+                    matches = [f for f in fares if f['category'] == 'THSR_STANDARD']
                 unique = {f['price'] for f in matches}
                 if len(unique) == 1:
                     train['fare'] = unique.pop()
@@ -200,7 +219,7 @@ def main():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     data = {'date': date, 'updatedAt': now.isoformat(timespec='seconds'),
             'source': 'TDX daily timetable and ODFare (scheduled, not real-time)',
-            'farePolicy': 'Adult one-way ticket; THSR standard reserved seat; only verified matching TRA fare types',
+            'farePolicy': 'Adult one-way; THSR standard reserved; TRA matched by explicit non-discounted adult ticket type and train category',
             'routes': routes}
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'Wrote {OUTPUT}: ' + ', '.join(f'{k}={len(v)}' for k, v in routes.items()))
