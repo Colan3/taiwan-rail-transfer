@@ -1,0 +1,31 @@
+name: Update Taiwan rail timetables
+on:
+  workflow_dispatch:
+  schedule:
+    # Taiwan 05:15 and 15:15; cron uses UTC.
+    - cron: '15 21,7 * * *'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests
+      - name: Download timetables
+        env:
+          TDX_CLIENT_ID: ${{ secrets.TDX_CLIENT_ID }}
+          TDX_CLIENT_SECRET: ${{ secrets.TDX_CLIENT_SECRET }}
+        run: python scripts/update_trains.py
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trains.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update daily rail timetable"
+            git push
+          fi
