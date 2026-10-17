@@ -11,7 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'data' / 'trains.json'
 AUTH = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token'
 BASE = 'https://tdx.transportdata.tw/api/basic/v2/Rail'
-ROUTES = [('tra_1', 'TRA', '竹南', '豐富'), ('thsr', 'THSR', '苗栗', '台中'), ('tra_2', 'TRA', '新烏日', '二水')]
+ROUTES = [
+    ('tra_1', 'TRA', '竹南', '豐富'),
+    ('thsr', 'THSR', '苗栗', '台中'),
+    ('tra_2', 'TRA', '新烏日', '二水'),
+    ('return_tra_1', 'TRA', '二水', '新烏日'),
+    ('return_thsr', 'THSR', '台中', '苗栗'),
+    ('return_tra_2', 'TRA', '豐富', '竹南'),
+]
 
 
 def token():
