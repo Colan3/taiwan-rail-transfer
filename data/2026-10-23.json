@@ -1,6 +1,6 @@
 {
   "date": "2026-10-23",
-  "updatedAt": "2026-10-17T20:30:10+08:00",
+  "updatedAt": "2026-10-21T07:52:39+08:00",
   "source": "TDX date-specific scheduled timetable and ODFare (not real-time)",
   "farePolicy": "Adult one-way; THSR standard reserved; TRA explicit fare categories",
   "routes": {
@@ -569,6 +569,15 @@
         "trainNo": "3553",
         "departure": "20:25",
         "arrival": "20:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1555",
+        "departure": "20:40",
+        "arrival": "20:56",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
