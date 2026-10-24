@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-24",
-  "updatedAt": "2026-10-24T20:00:07+08:00",
+  "date": "2026-10-25",
+  "updatedAt": "2026-10-25T07:14:05+08:00",
   "source": "TDX date-specific scheduled timetable and ODFare (not real-time)",
   "farePolicy": "Adult one-way; THSR standard reserved; TRA explicit fare categories",
   "routes": {
@@ -431,15 +431,6 @@
         "trainTypeName": ""
       },
       {
-        "trainNo": "1517",
-        "departure": "11:25",
-        "arrival": "11:42",
-        "fare": 270,
-        "operator": "THSR",
-        "trainTypeCode": "",
-        "trainTypeName": ""
-      },
-      {
         "trainNo": "0821",
         "departure": "11:58",
         "arrival": "12:15",
@@ -458,27 +449,9 @@
         "trainTypeName": ""
       },
       {
-        "trainNo": "1525",
-        "departure": "13:25",
-        "arrival": "13:42",
-        "fare": 270,
-        "operator": "THSR",
-        "trainTypeCode": "",
-        "trainTypeName": ""
-      },
-      {
         "trainNo": "0829",
         "departure": "13:58",
         "arrival": "14:15",
-        "fare": 270,
-        "operator": "THSR",
-        "trainTypeCode": "",
-        "trainTypeName": ""
-      },
-      {
-        "trainNo": "1529",
-        "departure": "14:25",
-        "arrival": "14:42",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -506,6 +479,15 @@
         "trainNo": "0837",
         "departure": "15:58",
         "arrival": "16:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1537",
+        "departure": "16:25",
+        "arrival": "16:42",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -557,9 +539,27 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1549",
+        "departure": "19:25",
+        "arrival": "19:42",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0853",
         "departure": "19:58",
         "arrival": "20:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1553",
+        "departure": "20:25",
+        "arrival": "20:42",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -578,6 +578,15 @@
         "trainNo": "0861",
         "departure": "21:58",
         "arrival": "22:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1563",
+        "departure": "22:52",
+        "arrival": "23:10",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -856,7 +865,7 @@
         "trainTypeName": "區間"
       },
       {
-        "trainNo": "2023",
+        "trainNo": "2019",
         "departure": "18:33",
         "arrival": "19:14",
         "fare": 90,
@@ -1101,7 +1110,7 @@
         "trainTypeName": "區間"
       },
       {
-        "trainNo": "3146",
+        "trainNo": "3148",
         "departure": "11:03",
         "arrival": "11:57",
         "fare": 90,
@@ -1364,15 +1373,6 @@
         "trainTypeName": ""
       },
       {
-        "trainNo": "1510",
-        "departure": "07:12",
-        "arrival": "07:30",
-        "fare": 270,
-        "operator": "THSR",
-        "trainTypeCode": "",
-        "trainTypeName": ""
-      },
-      {
         "trainNo": "0802",
         "departure": "07:25",
         "arrival": "07:44",
@@ -1394,6 +1394,15 @@
         "trainNo": "0806",
         "departure": "08:36",
         "arrival": "08:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1518",
+        "departure": "09:04",
+        "arrival": "09:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -1445,9 +1454,27 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1534",
+        "departure": "13:04",
+        "arrival": "13:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0826",
         "departure": "13:36",
         "arrival": "13:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1538",
+        "departure": "14:04",
+        "arrival": "14:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -1463,9 +1490,27 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1542",
+        "departure": "15:04",
+        "arrival": "15:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0834",
         "departure": "15:36",
         "arrival": "15:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1546",
+        "departure": "16:04",
+        "arrival": "16:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -1481,9 +1526,27 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1550",
+        "departure": "17:04",
+        "arrival": "17:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0842",
         "departure": "17:36",
         "arrival": "17:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1554",
+        "departure": "18:04",
+        "arrival": "18:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -1499,6 +1562,15 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1558",
+        "departure": "19:04",
+        "arrival": "19:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0850",
         "departure": "19:36",
         "arrival": "19:54",
@@ -1508,9 +1580,27 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1562",
+        "departure": "20:04",
+        "arrival": "20:22",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0854",
         "departure": "20:36",
         "arrival": "20:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1566",
+        "departure": "21:04",
+        "arrival": "21:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
