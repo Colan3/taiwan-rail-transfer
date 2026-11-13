@@ -1,6 +1,6 @@
 {
   "date": "2026-11-15",
-  "updatedAt": "2026-11-13T09:49:14+08:00",
+  "updatedAt": "2026-11-13T23:23:42+08:00",
   "source": "TDX date-specific scheduled timetable and ODFare (not real-time)",
   "farePolicy": "Adult one-way; THSR standard reserved; TRA explicit fare categories",
   "routes": {
