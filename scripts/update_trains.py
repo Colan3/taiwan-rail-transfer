@@ -139,7 +139,11 @@ def adult_oneway_fares(operator, origin_id, destination_id, headers):
     """Read operator-specific adult fares; never infer fares from a cheaper category."""
     items = api_list(f'{operator}/ODFare/{origin_id}/to/{destination_id}', headers)
     fare_shape_diagnostic(operator, items)
-    options = []
+    return [{'price': price, 'category': category}
+            for category, price in fare_options(operator, items)]
+
+
+def fare_options(operator, items):
     for item in items:
         for f in item.get('Fares', []):
             price = f.get('Price')
@@ -162,8 +166,7 @@ def adult_oneway_fares(operator, origin_id, destination_id, headers):
                 }.get(ticket_type)
                 if category is None:
                     continue
-            options.append({'price': int(price), 'category': category, 'ticketType': ticket_type})
-    return options
+            yield category, int(price)
 
 
 def tra_category(train):
@@ -231,7 +234,74 @@ def load_cached(path, expected_date):
 
 def write_json(path, obj):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    temporary = path.with_suffix('.tmp')
+    compact = path.parent.name == 'network'
+    temporary.write_text(json.dumps(obj, ensure_ascii=False,
+                                    indent=None if compact else 2,
+                                    separators=(',', ':') if compact else None) + '\n',
+                         encoding='utf-8')
+    temporary.replace(path)
+
+
+def network_data(date, datasets, routes):
+    stations, trains, fares = {}, [], {}
+    for operator, entries in datasets.items():
+        for entry in entries:
+            info = entry.get('DailyTrainInfo') or {}
+            number = info.get('TrainNo') or entry.get('TrainNo')
+            stops = []
+            ordered = sorted(entry.get('StopTimes') or [], key=lambda stop: stop['StopSequence'])
+            for stop in ordered:
+                code = stop.get('StationID')
+                name = station_name(stop)
+                if not code or not name:
+                    raise ValueError(f'{operator} {number}: missing station')
+                key = f'{operator}:{code}'
+                stations[key] = name
+                stops.append([key, stop.get('ArrivalTime'), stop.get('DepartureTime')])
+            if number and len(stops) >= 2:
+                trains.append([operator, str(number), tra_category({
+                    'trainTypeName': station_name({'StationName': info.get('TrainTypeName')})
+                }), stops])
+    for key, operator, origin, destination in ROUTES:
+        ids = {name: code for code, name in stations.items() if code.startswith(operator + ':')}
+        for train in routes[key]:
+            if train['fare'] is not None:
+                fares[f"{operator}/{train['trainNo']}/{ids[origin]}/{ids[destination]}"] = train['fare']
+    return {'version': 1, 'date': date, 'stations': stations, 'trains': trains, 'fares': fares}
+
+
+def refresh_network_fares(headers, today):
+    path = DATA_DIR / 'network-fares.json'
+    try:
+        cached = json.loads(path.read_text(encoding='utf-8'))
+        if (today - dt.date.fromisoformat(cached['date'])).days < 7:
+            return
+    except (OSError, ValueError, TypeError, KeyError):
+        pass
+    fares = {}
+    for operator in ('THSR', 'TRA'):
+        # Page through the OD catalog so each request has a bounded response size.
+        size = 1000
+        for offset in range(0, 250000, size):
+            page = api_list(f'{operator}/ODFare', headers, {
+                '$top': size, '$skip': offset,
+                '$orderby': 'OriginStationID,DestinationStationID',
+            })
+            for item in page:
+                origin, destination = item['OriginStationID'], item['DestinationStationID']
+                for category, price in fare_options(operator, [item]):
+                    key = f'{operator}:{origin}/{operator}:{destination}/{category}'
+                    if key in fares and fares[key] != price:
+                        fares[key] = None
+                    else:
+                        fares[key] = price
+            if not page:
+                break
+        else:
+            raise ValueError(f'{operator} fare catalog did not finish paging')
+    if fares:
+        write_json(path, {'date': today.isoformat(), 'fares': fares})
 
 
 def make_day(date, now, headers, catalogs):
@@ -242,6 +312,10 @@ def make_day(date, now, headers, catalogs):
     if missing:
         raise ValueError(f'Incomplete timetable for {date}: {missing}')
     diagnostics = assign_fares(routes, catalogs)
+    try:
+        write_json(DATA_DIR / 'network' / f'{date}.json', network_data(date, datasets, routes))
+    except (OSError, KeyError, ValueError, TypeError) as exc:
+        logging.warning('Network timetable unavailable for %s: %s', date, exc)
     print(f'{date}: ' + ', '.join(diagnostics), flush=True)
     return {
         'date': date,
@@ -266,7 +340,8 @@ def main():
         date = day.isoformat()
         path = DATA_DIR / f'{date}.json'
         cached = load_cached(path, date)
-        if cached is not None and offset > REFRESH_DAYS:
+        if (cached is not None and offset > REFRESH_DAYS
+                and (DATA_DIR / 'network' / f'{date}.json').is_file()):
             available.append(date)
             print(f'CACHE: {date} (previously fetched)', flush=True)
             continue
@@ -300,6 +375,10 @@ def main():
         'unavailableDates': unavailable,
     }
     write_json(DATA_DIR / 'dates.json', manifest)
+    try:
+        refresh_network_fares(headers, today)
+    except (requests.RequestException, OSError, KeyError, ValueError, TypeError) as exc:
+        logging.warning('Using existing fares after network fare refresh failed: %s', exc)
     print(f'DONE: available={len(available)} unavailable={len(unavailable)}', flush=True)
 
 
