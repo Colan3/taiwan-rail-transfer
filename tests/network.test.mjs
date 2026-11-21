@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {searchNetwork} from '../network.mjs';
+import {groupStations} from '../station-groups.mjs';
 const O='TRA:o', A='TRA:a', H='THSR:h', D='THSR:d', B='TRA:b';
 const stations={[O]:'竹南',[A]:'豐富',[H]:'苗栗',[D]:'台中',[B]:'二水'};
 const train=(op,no,times)=>[op,no,'區間',times.map(([id,t])=>[id,t,t])];
@@ -58,4 +59,13 @@ assert.equal(withWalks.endWalk, 15);
 assert.equal(withWalks.arrival, 1095);
 assert.equal(withWalks.price, 130);
 assert.equal(searchNetwork([terminalWalks], A, 'TRA:w', 1041).all.arrival.length, 0);
+const grouped = groupStations(
+  {'TRA:n': '臺北', 'THSR:s': '左營', 'TRA:s': '高雄', 'TRA:u': '未提供'},
+  {'TRA:n': {county: '臺北市', latitude: 25.04},
+   'THSR:s': {county: '高雄市', latitude: 22.68},
+   'TRA:s': {county: '高雄市', latitude: 22.64}},
+);
+assert.deepEqual(grouped.map(([county, rows]) => [county, rows.map(row => row.id)]), [
+  ['高雄市', ['TRA:s', 'THSR:s']], ['臺北市', ['TRA:n']], ['縣市未提供', ['TRA:u']],
+]);
 console.log('routing assertions passed');

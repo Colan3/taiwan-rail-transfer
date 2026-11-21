@@ -3,7 +3,9 @@ import datetime as dt
 import json
 import os
 import logging
+import re
 import time
+import unicodedata
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from pathlib import Path
@@ -15,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / 'data'
 OUTPUT = DATA_DIR / 'trains.json'
 HORIZON_DAYS = 7
+NETWORK_VERSION = 2
 # Always refresh the near future. Cached farther dates reduce TDX request volume.
 REFRESH_DAYS = 2
 REQUEST_GAP_SECONDS = 0.35
@@ -115,7 +118,7 @@ def extract(entries, operator, origin, destination):
 
 
 def api_list(path, headers, params=None):
-    """Fetch only small station/OD datasets; never download TRA's entire fare matrix."""
+    """Read a station list, individual OD fare, or bounded page of fares."""
     obj = request_json(f'{BASE}/{path}', headers,
                        params={**(params or {}), '$format': 'JSON'})
     if isinstance(obj, dict):
@@ -125,14 +128,23 @@ def api_list(path, headers, params=None):
     return obj
 
 
-def station_ids(operator, headers):
-    stations = api_list(f'{operator}/Station', headers)
-    names = {}
+COUNTY_PATTERN = re.compile(
+    r'(基隆市|臺北市|新北市|桃園市|新竹[市縣]|苗栗縣|臺中市|彰化縣|南投縣|'
+    r'雲林縣|嘉義[市縣]|臺南市|高雄市|屏東縣|臺東縣|花蓮縣|宜蘭縣)'
+)
+
+
+def station_locations(operator, stations):
+    locations = {}
     for station in stations:
-        zh = (station.get('StationName') or {}).get('Zh_tw', '')
-        if zh:
-            names[zh] = str(station.get('StationID', ''))
-    return names
+        address = str(station.get('StationAddress') or station.get('Address') or '')
+        county = COUNTY_PATTERN.search(address.replace('台', '臺'))
+        coordinates = station.get('StationPosition') or {}
+        latitude = coordinates.get('PositionLat')
+        station_id = station.get('StationID')
+        if station_id and county and isinstance(latitude, (float, int)) and 21 < latitude < 26:
+            locations[f'{operator}:{station_id}'] = {'county': county.group(), 'latitude': latitude}
+    return locations
 
 
 def adult_oneway_fares(operator, origin_id, destination_id, headers):
@@ -170,25 +182,31 @@ def fare_options(operator, items):
 
 
 def tra_category(train):
-    """Only map train types with a clear ordinary adult fare class."""
-    name = str(train.get('trainTypeName') or '').strip()
+    """Map regular services to their adult standard-class TDX fare codes."""
+    name = unicodedata.normalize('NFKC', str(train.get('trainTypeName') or ''))
+    if re.search(r'觀光|鳴日|環島之星|郵輪|專開', name):
+        return None
+    name = re.sub(r'\s+', '', name).split('(', 1)[0]
     if name in ('區間', '區間車', '區間快', '區間快車'):
         return '區間'
     if name in ('莒光', '莒光號'):
         return '莒光'
-    if name in ('自強', '自強號'):
+    if name in ('自強', '自強號', '自強3000', '新自強', '新自強號',
+                '普悠瑪', '普悠瑪號', '太魯閣', '太魯閣號'):
         return '自強'
     if name in ('復興', '復興號'):
         return '區間'  # Shares the fare class represented by TDX 成復
     if name in ('普快', '普快車'):
         return '普快'
-    # Do not silently assume newer premium trains use the ordinary Tze-Chiang fare.
+    # Special trains and premium cabins require their own published fare.
     return None
 
 
-def fetch_fare_catalog(headers):
+def fetch_fare_catalog(headers, station_catalogs):
     """Fetch each OD fare only once per run, rather than once per date."""
-    stations = {op: station_ids(op, headers) for op in ('TRA', 'THSR')}
+    stations = {operator: {station_name(station): str(station['StationID'])
+                           for station in entries if station.get('StationID')}
+                for operator, entries in station_catalogs.items()}
     catalogs = {}
     for key, operator, origin, destination in ROUTES:
         try:
@@ -260,15 +278,28 @@ def network_data(date, datasets, routes):
                 stations[key] = name
                 stops.append([key, stop.get('ArrivalTime'), stop.get('DepartureTime')])
             if number and len(stops) >= 2:
-                trains.append([operator, str(number), tra_category({
-                    'trainTypeName': station_name({'StationName': info.get('TrainTypeName')})
-                }), stops])
+                name = station_name({'StationName': info.get('TrainTypeName')})
+                category = tra_category({'trainTypeName': name}) if operator == 'TRA' else None
+                trains.append([operator, str(number), category, stops, name])
     for key, operator, origin, destination in ROUTES:
         ids = {name: code for code, name in stations.items() if code.startswith(operator + ':')}
         for train in routes[key]:
             if train['fare'] is not None:
                 fares[f"{operator}/{train['trainNo']}/{ids[origin]}/{ids[destination]}"] = train['fare']
-    return {'version': 1, 'date': date, 'stations': stations, 'trains': trains, 'fares': fares}
+    unmapped = sorted({name for op, _, category, _, name in trains if op == 'TRA' and not category})
+    if unmapped:
+        print(f'{date}: TRA services without a standard fare class: {unmapped}', flush=True)
+    return {'version': NETWORK_VERSION, 'date': date, 'stations': stations,
+            'trains': trains, 'fares': fares}
+
+
+def current_network_cache(date):
+    try:
+        path = DATA_DIR / 'network' / f'{date}.json'
+        payload = json.loads(path.read_text(encoding='utf-8'))
+        return payload.get('version') == NETWORK_VERSION and payload.get('date') == date
+    except (OSError, ValueError, AttributeError):
+        return False
 
 
 def refresh_network_fares(headers, today):
@@ -343,7 +374,14 @@ def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     # One fare catalog shared by every date. This avoids ~186 extra fare calls.
-    catalogs = fetch_fare_catalog(headers)
+    station_catalogs = {op: api_list(f'{op}/Station', headers) for op in ('TRA', 'THSR')}
+    locations = {}
+    for operator, entries in station_catalogs.items():
+        locations.update(station_locations(operator, entries))
+    if locations:
+        write_json(DATA_DIR / 'station-locations.json', locations)
+    print(f'STATIONS: {len(locations)}/{sum(map(len, station_catalogs.values()))} with county and latitude', flush=True)
+    catalogs = fetch_fare_catalog(headers, station_catalogs)
     available = []
     unavailable = []
     for offset in range(HORIZON_DAYS + 1):
@@ -351,8 +389,7 @@ def main():
         date = day.isoformat()
         path = DATA_DIR / f'{date}.json'
         cached = load_cached(path, date)
-        if (cached is not None and offset > REFRESH_DAYS
-                and (DATA_DIR / 'network' / f'{date}.json').is_file()):
+        if cached is not None and offset > REFRESH_DAYS and current_network_cache(date):
             available.append(date)
             print(f'CACHE: {date} (previously fetched)', flush=True)
             continue

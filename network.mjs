@@ -58,8 +58,8 @@ function indexTrains(days, stations) {
   const events = [];
   const departures = new Map(Object.keys(stations).map(id => [id, []]));
   days.forEach((day, index) => {
-    for (const [operator, number, category, rawStops] of day.trains) {
-      const train = {operator, number, category, fares: day.fares ?? {}, stops: []};
+    for (const [operator, number, category, rawStops, name] of day.trains) {
+      const train = {operator, number, category, name, fares: day.fares ?? {}, stops: []};
       let previous = 0;
       for (const [station, rawArrival, rawDeparture] of rawStops) {
         const arrival = toMinutes(rawArrival, previous);
@@ -147,7 +147,7 @@ export function searchNetwork(days, origin, destination, earliest, catalog = {})
         onwardAt(stop, train, links, departures).concat(endWalk === undefined ? [] : [null]);
       if (!nextPlans.length) continue;
       const ride = {
-        operator: train.operator, number: train.number, from: event.station,
+        operator: train.operator, number: train.number, name: train.name, from: event.station,
         to: stop.station, departure: event.departure, arrival: stop.arrival,
         fare: ticket(event, stop, catalog),
       };

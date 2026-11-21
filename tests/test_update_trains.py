@@ -9,6 +9,26 @@ from scripts import update_trains as updater
 
 
 class NetworkPublicationTest(unittest.TestCase):
+    def test_station_locations_use_county_from_official_address(self):
+        stations = [
+            {'StationID': '1010', 'StationAddress': '110台北市信義區',
+             'StationPosition': {'PositionLat': 25.03}},
+            {'StationID': '1030', 'StationAddress': '板橋區',
+             'StationPosition': {'PositionLat': 25.01}},
+        ]
+        self.assertEqual(updater.station_locations('TRA', stations), {
+            'TRA:1010': {'county': '臺北市', 'latitude': 25.03}
+        })
+
+    def test_adult_fares_cover_standard_express_train_variants(self):
+        for name, expected in [
+            ('自強（3000）', '自強'), ('自強(推拉式自強號且無自行車車廂)', '自強'),
+            ('普悠瑪', '自強'), ('太魯閣號', '自強'), ('莒光(無身障座位)', '莒光'),
+            ('區間快', '區間'), ('莒光（郵輪式觀光）', None), ('未知車種', None),
+        ]:
+            with self.subTest(name=name):
+                self.assertEqual(updater.tra_category({'trainTypeName': name}), expected)
+
     def test_future_files_beyond_today_plus_seven_are_retired(self):
         today = dt.date(2026, 11, 21)
         end = today + dt.timedelta(days=updater.HORIZON_DAYS)

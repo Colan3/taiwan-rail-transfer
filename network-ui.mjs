@@ -1,4 +1,5 @@
 import {searchNetwork} from './network.mjs';
+import {groupStations} from './station-groups.mjs';
 
 const get = id => document.getElementById(id);
 const operator = code => code === 'TRA' ? '台鐵' : '高鐵';
@@ -11,7 +12,7 @@ const formatTime = minute => {
 const fare = amount => amount === null ? '票價待確認' : `NT$ ${amount}`;
 const stationLabel = (id, stations) => `${operator(id.split(':')[0])} ${stations[id]}`;
 let enabled = false, sequence = 0, sort = 'arrival';
-let days = [], stations = {}, catalog = {}, results = null;
+let days = [], stations = {}, locations = {}, catalog = {}, results = null;
 
 function writePlan(plan) {
   const lines = [];
@@ -20,7 +21,8 @@ function writePlan(plan) {
   }
   for (let leg = plan; leg; leg = leg.next) {
     const {ride} = leg;
-    lines.push(`${operator(ride.operator)} ${ride.number} 次｜${stations[ride.from]} ${formatTime(ride.departure)} → ${stations[ride.to]} ${formatTime(ride.arrival)}｜${fare(ride.fare)}`);
+    const service = ride.operator === 'TRA' && ride.name ? ` ${ride.name}` : '';
+    lines.push(`${operator(ride.operator)}${service} ${ride.number} 次｜${stations[ride.from]} ${formatTime(ride.departure)} → ${stations[ride.to]} ${formatTime(ride.arrival)}｜${fare(ride.fare)}`);
     if (leg.next) {
       const interchange = ride.to === leg.next.ride.from ? stations[ride.to] :
         `${stationLabel(ride.to, stations)} → ${stationLabel(leg.next.ride.from, stations)}`;
@@ -100,12 +102,10 @@ function query() {
 function populate(id, fallback) {
   const select = get(id), previous = select.value;
   select.replaceChildren(new Option('請選擇車站', ''));
-  for (const code of ['TRA', 'THSR']) {
+  for (const [county, entries] of groupStations(stations, locations)) {
     const group = document.createElement('optgroup');
-    group.label = operator(code);
-    const entries = Object.entries(stations).filter(([station]) => station.startsWith(code + ':'));
-    entries.sort((a, b) => a[1].localeCompare(b[1], 'zh-TW'));
-    for (const [station, name] of entries) group.append(new Option(name, station));
+    group.label = county;
+    for (const {id} of entries) group.append(new Option(stationLabel(id, stations), id));
     select.append(group);
   }
   select.value = stations[previous] ? previous :
@@ -120,7 +120,7 @@ async function readJson(path) {
 
 async function readDay(date) {
   const data = await readJson(`data/network/${date}.json`);
-  if (data.version !== 1 || data.date !== date || !data.stations || !data.trains?.length) {
+  if (![1, 2].includes(data.version) || data.date !== date || !data.stations || !data.trains?.length) {
     throw new Error('全站班次格式或日期不符');
   }
   return data;
@@ -140,14 +140,16 @@ async function load() {
   next.setUTCDate(next.getUTCDate() + 1);
   const nextDate = next.toISOString().slice(0, 10);
   try {
-    const [day, tomorrow, fares] = await Promise.all([
+    const [day, tomorrow, fares, stationLocations] = await Promise.all([
       readDay(date),
       nextDate <= get('date').max ? readDay(nextDate).catch(() => null) : null,
       readJson('data/network-fares.json').catch(() => null),
+      readJson('data/station-locations.json').catch(() => null),
     ]);
     if (request !== sequence) return;
     days = tomorrow ? [day, tomorrow] : [day];
     stations = day.stations;
+    locations = stationLocations ?? {};
     catalog = fares?.fares ?? {};
     populate('origin', '竹南');
     populate('destination', '二水');
