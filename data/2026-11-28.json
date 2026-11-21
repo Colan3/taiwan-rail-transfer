@@ -1,6 +1,6 @@
 {
   "date": "2026-11-28",
-  "updatedAt": "2026-10-30T08:58:58+08:00",
+  "updatedAt": "2026-11-21T20:53:00+08:00",
   "source": "TDX date-specific scheduled timetable and ODFare (not real-time)",
   "farePolicy": "Adult one-way; THSR standard reserved; TRA explicit fare categories",
   "routes": {
@@ -425,6 +425,15 @@
         "trainNo": "0817",
         "departure": "10:58",
         "arrival": "11:15",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1517",
+        "departure": "11:25",
+        "arrival": "11:42",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -1346,6 +1355,15 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1800",
+        "departure": "07:33",
+        "arrival": "07:51",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "1514",
         "departure": "08:04",
         "arrival": "08:22",
@@ -1355,9 +1373,27 @@
         "trainTypeName": ""
       },
       {
+        "trainNo": "1804",
+        "departure": "08:21",
+        "arrival": "08:38",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
         "trainNo": "0806",
         "departure": "08:36",
         "arrival": "08:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1518",
+        "departure": "09:04",
+        "arrival": "09:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
@@ -1385,6 +1421,15 @@
         "trainNo": "0814",
         "departure": "10:36",
         "arrival": "10:54",
+        "fare": 270,
+        "operator": "THSR",
+        "trainTypeCode": "",
+        "trainTypeName": ""
+      },
+      {
+        "trainNo": "1526",
+        "departure": "11:04",
+        "arrival": "11:22",
         "fare": 270,
         "operator": "THSR",
         "trainTypeCode": "",
