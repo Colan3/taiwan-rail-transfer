@@ -8,6 +8,20 @@ export const MAX_WAIT = 90;
 
 const canonical = name => name.replaceAll('臺', '台');
 const first = plan => plan.ride;
+
+export function regularServices(day) {
+  // TDX publishes charter services in the timetable, but they use separate
+  // group or tour sales and do not accept standard origin–destination fares.
+  const trains = day.trains.filter(([operator, , , , name]) =>
+    operator !== 'TRA' || !/專開/.test(name ?? ''));
+  const served = new Set();
+  for (const [, , , stops] of trains) {
+    for (const [station] of stops) served.add(station);
+  }
+  const stations = Object.fromEntries(Object.entries(day.stations).filter(([id]) => served.has(id)));
+  return {...day, stations, trains};
+}
+
 export const byArrival = (a, b) =>
   a.arrival - b.arrival || b.departure - a.departure || a.legs - b.legs;
 const suffixArrival = (a, b) => a.arrival - b.arrival || a.legs - b.legs || byArrival(a, b);

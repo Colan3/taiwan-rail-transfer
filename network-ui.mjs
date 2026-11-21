@@ -1,4 +1,4 @@
-import {searchNetwork} from './network.mjs';
+import {regularServices, searchNetwork} from './network.mjs';
 import {groupStations} from './station-groups.mjs';
 
 const get = id => document.getElementById(id);
@@ -123,7 +123,7 @@ async function readDay(date) {
   if (![1, 2].includes(data.version) || data.date !== date || !data.stations || !data.trains?.length) {
     throw new Error('全站班次格式或日期不符');
   }
-  return data;
+  return regularServices(data);
 }
 
 async function load() {

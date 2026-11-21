@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {searchNetwork} from '../network.mjs';
+import {regularServices, searchNetwork} from '../network.mjs';
 import {groupStations} from '../station-groups.mjs';
 const O='TRA:o', A='TRA:a', H='THSR:h', D='THSR:d', B='TRA:b';
 const stations={[O]:'竹南',[A]:'豐富',[H]:'苗栗',[D]:'台中',[B]:'二水'};
@@ -68,4 +68,12 @@ const grouped = groupStations(
 assert.deepEqual(grouped.map(([county, rows]) => [county, rows.map(row => row.id)]), [
   ['高雄市', ['TRA:s', 'THSR:s']], ['臺北市', ['TRA:n']], ['縣市未提供', ['TRA:u']],
 ]);
+const publicDay = regularServices({
+  ...dataset,
+  stations: {...stations, 'TRA:charter': '專開站'},
+  trains: [...dataset.trains, ['TRA', 'charter', null,
+    [[O, '17:40', '17:40'], ['TRA:charter', '18:00', null]], '莒光(專開列車)']],
+});
+assert.equal(publicDay.trains.length, dataset.trains.length);
+assert.equal(publicDay.stations['TRA:charter'], undefined);
 console.log('routing assertions passed');
