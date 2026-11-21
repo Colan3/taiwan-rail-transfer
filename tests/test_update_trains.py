@@ -9,6 +9,23 @@ from scripts import update_trains as updater
 
 
 class NetworkPublicationTest(unittest.TestCase):
+    def test_future_files_beyond_today_plus_seven_are_retired(self):
+        today = dt.date(2026, 11, 21)
+        end = today + dt.timedelta(days=updater.HORIZON_DAYS)
+        self.assertEqual(end.isoformat(), '2026-11-28')
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            network = root / 'network'
+            network.mkdir()
+            for folder in (root, network):
+                for name in ('dates.json', '2026-11-20.json', '2026-11-28.json', '2026-11-29.json'):
+                    (folder / name).touch()
+            with patch.object(updater, 'DATA_DIR', root):
+                updater.retire_future_files(end)
+            for folder in (root, network):
+                self.assertEqual(sorted(path.name for path in folder.glob('*.json')),
+                                 ['2026-11-20.json', '2026-11-28.json', 'dates.json'])
+
     def test_publish_legacy_and_network_from_same_timetable(self):
         datasets = {'TRA': [], 'THSR': []}
         catalogs = {}

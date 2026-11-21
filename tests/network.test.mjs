@@ -47,4 +47,15 @@ const fourLegs={stations,trains:[
 ]};
 fourLegs.stations={...stations,'THSR:e':'左營'};
 assert.equal(searchNetwork([fourLegs],O,'THSR:e',0).all.arrival[0].legs,4);
+const terminalWalks = {
+  stations: {...stations, 'TRA:w': '新烏日'},
+  trains: [h('walk-direct', [[H, '17:35'], [D, '18:00']])],
+};
+const withWalks = searchNetwork([terminalWalks], A, 'TRA:w', 1020, fares).direct.arrival[0];
+assert.equal(withWalks.startWalk, 15);
+assert.equal(withWalks.departure, 1040);
+assert.equal(withWalks.endWalk, 15);
+assert.equal(withWalks.arrival, 1095);
+assert.equal(withWalks.price, 130);
+assert.equal(searchNetwork([terminalWalks], A, 'TRA:w', 1041).all.arrival.length, 0);
 console.log('routing assertions passed');

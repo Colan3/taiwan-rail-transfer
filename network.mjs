@@ -9,7 +9,7 @@ export const MAX_WAIT = 90;
 const canonical = name => name.replaceAll('臺', '台');
 const first = plan => plan.ride;
 export const byArrival = (a, b) =>
-  a.arrival - b.arrival || b.ride.departure - a.ride.departure || a.legs - b.legs;
+  a.arrival - b.arrival || b.departure - a.departure || a.legs - b.legs;
 const suffixArrival = (a, b) => a.arrival - b.arrival || a.legs - b.legs || byArrival(a, b);
 
 function take(list, plan, compare) {
@@ -124,20 +124,27 @@ export function searchNetwork(days, origin, destination, earliest, catalog = {})
   if (origin === destination || !Object.hasOwn(stations, origin) ||
       !Object.hasOwn(stations, destination)) return result;
   const links = makeLinks(stations);
+  const startWalks = new Map(links.get(origin));
+  const endWalks = new Map(links.get(destination));
+  startWalks.set(origin, 0);
+  endWalks.set(destination, 0);
   const {events, departures} = indexTrains(days, stations);
   // Every connection departs after the incoming boarding event. Processing in
   // reverse time makes each continuation final before a feeder evaluates it.
   for (const event of events) {
     if (event.departure < earliest) break;
-    const isStart = event.station === origin && event.departure < 1440;
+    const startWalk = startWalks.get(event.station);
+    const isStart = startWalk !== undefined && event.departure < 1440 &&
+      event.departure - startWalk >= earliest;
     const {train} = event;
     for (let i = event.position + 1; i < train.stops.length; i++) {
       const stop = train.stops[i];
       // A return to the original departure station cannot improve a journey.
       if (stop.station === origin) break;
       if (stop.arrival === null || stop.arrival <= event.departure) continue;
-      const direct = stop.station === destination;
-      const nextPlans = direct ? [null] : onwardAt(stop, train, links, departures);
+      const endWalk = endWalks.get(stop.station);
+      const nextPlans = stop.station === destination ? [null] :
+        onwardAt(stop, train, links, departures).concat(endWalk === undefined ? [] : [null]);
       if (!nextPlans.length) continue;
       const ride = {
         operator: train.operator, number: train.number, from: event.station,
@@ -149,15 +156,18 @@ export function searchNetwork(days, origin, destination, earliest, catalog = {})
           ? null : ride.fare + (next?.price ?? 0);
         const walk = next ? links.get(stop.station).find(([id]) => id === first(next).from)[1] : 0;
         const wait = next ? first(next).departure - stop.arrival - walk : 0;
-        const plan = {ride, next, walk, wait, price, arrival: next?.arrival ?? stop.arrival,
+        const plan = {ride, next, walk, wait, price, departure: ride.departure,
+          endWalk: next ? 0 : endWalk, destination,
+          arrival: next?.arrival ?? stop.arrival + endWalk,
           legs: 1 + (next?.legs ?? 0)};
         offer(event.best, plan);
         if (isStart) {
-          offer(result.all, plan);
-          offer(direct ? result.direct : result.transfer, plan);
+          const journey = {...plan, startWalk, origin, departure: plan.departure - startWalk};
+          offer(result.all, journey);
+          offer(next ? result.transfer : result.direct, journey);
         }
       }
-      if (direct) break;
+      if (stop.station === destination) break;
     }
   }
   return result;

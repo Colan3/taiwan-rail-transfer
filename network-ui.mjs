@@ -15,6 +15,9 @@ let days = [], stations = {}, catalog = {}, results = null;
 
 function writePlan(plan) {
   const lines = [];
+  if (plan.startWalk) {
+    lines.push(`步行 ${formatTime(plan.departure)}｜${stationLabel(plan.origin, stations)} → ${stationLabel(plan.ride.from, stations)}｜預留 ${plan.startWalk} 分鐘`);
+  }
   for (let leg = plan; leg; leg = leg.next) {
     const {ride} = leg;
     lines.push(`${operator(ride.operator)} ${ride.number} 次｜${stations[ride.from]} ${formatTime(ride.departure)} → ${stations[ride.to]} ${formatTime(ride.arrival)}｜${fare(ride.fare)}`);
@@ -22,6 +25,9 @@ function writePlan(plan) {
       const interchange = ride.to === leg.next.ride.from ? stations[ride.to] :
         `${stationLabel(ride.to, stations)} → ${stationLabel(leg.next.ride.from, stations)}`;
       lines.push(`轉乘 ${interchange}｜步行預留 ${leg.walk} 分鐘、候車 ${leg.wait} 分鐘`);
+    }
+    if (leg.endWalk) {
+      lines.push(`步行至 ${stationLabel(leg.destination, stations)}｜預留 ${leg.endWalk} 分鐘｜${formatTime(leg.arrival)} 抵達`);
     }
   }
   return lines.join('\n');
@@ -35,7 +41,7 @@ function apply(plan) {
     get('networkPreview').value = '';
     return;
   }
-  const details = `${writePlan(plan)}\n\n全程 ${plan.arrival - plan.ride.departure} 分鐘｜成人全票 ${fare(plan.price)}`;
+  const details = `${writePlan(plan)}\n\n全程 ${plan.arrival - plan.departure} 分鐘｜成人全票 ${fare(plan.price)}`;
   get('networkSummary').textContent = details;
   get('networkPreview').value = `台灣鐵路行程\n搭乘日期 ${get('date').value}\n${details}\n\n資料為預定時刻表，搭車前請確認官方資訊。`;
 }
@@ -65,8 +71,8 @@ function render() {
     }
     for (const [index, plan] of plans.entries()) {
       const card = append('article', '', area, 'plan');
-      append('h4', `第 ${index + 1} 名 · ${formatTime(plan.ride.departure)} → ${formatTime(plan.arrival)}｜${fare(plan.price)}`, card);
-      append('p', `全程 ${plan.arrival - plan.ride.departure} 分鐘｜${plan.legs === 1 ? '直達' : `轉乘 ${plan.legs - 1} 次`}`, card, 'plan-metrics');
+      append('h4', `第 ${index + 1} 名 · ${formatTime(plan.departure)} → ${formatTime(plan.arrival)}｜${fare(plan.price)}`, card);
+      append('p', `全程 ${plan.arrival - plan.departure} 分鐘｜${plan.legs === 1 ? '直達' : `轉乘 ${plan.legs - 1} 次`}`, card, 'plan-metrics');
       append('p', writePlan(plan), card, 'plan-lines');
       const button = append('button', '套用這組', card);
       button.type = 'button';
@@ -132,10 +138,11 @@ async function load() {
     return;
   }
   next.setUTCDate(next.getUTCDate() + 1);
+  const nextDate = next.toISOString().slice(0, 10);
   try {
     const [day, tomorrow, fares] = await Promise.all([
       readDay(date),
-      readDay(next.toISOString().slice(0, 10)).catch(() => null),
+      nextDate <= get('date').max ? readDay(nextDate).catch(() => null) : null,
       readJson('data/network-fares.json').catch(() => null),
     ]);
     if (request !== sequence) return;

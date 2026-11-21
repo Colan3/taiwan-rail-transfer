@@ -1,4 +1,4 @@
-"""Fetch today and the next 30 days of Taiwan rail timetables from TDX."""
+"""Fetch today and the next seven days of Taiwan rail timetables from TDX."""
 import datetime as dt
 import json
 import os
@@ -14,7 +14,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / 'data'
 OUTPUT = DATA_DIR / 'trains.json'
-HORIZON_DAYS = 30
+HORIZON_DAYS = 7
 # Always refresh the near future. Cached farther dates reduce TDX request volume.
 REFRESH_DAYS = 2
 REQUEST_GAP_SECONDS = 0.35
@@ -325,6 +325,17 @@ def make_day(date, now, headers, catalogs):
         'routes': routes,
     }
 
+def retire_future_files(end):
+    for directory in (DATA_DIR, DATA_DIR / 'network'):
+        for path in directory.glob('????-??-??.json'):
+            try:
+                date = dt.date.fromisoformat(path.stem)
+            except ValueError:
+                continue
+            if date > end:
+                path.unlink()
+
+
 def main():
     now = dt.datetime.now(ZoneInfo('Asia/Taipei'))
     today = now.date()
@@ -375,6 +386,8 @@ def main():
         'unavailableDates': unavailable,
     }
     write_json(DATA_DIR / 'dates.json', manifest)
+    # Retire future files generated under the previous, longer query window.
+    retire_future_files(today + dt.timedelta(days=HORIZON_DAYS))
     try:
         refresh_network_fares(headers, today)
     except (requests.RequestException, OSError, KeyError, ValueError, TypeError) as exc:

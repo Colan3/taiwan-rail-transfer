@@ -68,7 +68,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #3
   <div><label for="destination">抵達站</label><select id="destination" disabled></select></div>
  </div>
  <button id="swapStations" type="button" disabled>交換起訖站</button>
- <p class="muted">搜尋指定時間後出發的班次。轉乘限同站或有步行連通的台鐵與高鐵車站，步行後最多候車 90 分鐘。</p>
+ <p class="muted">可查今天至第 7 天的班次。若起訖站與另一鐵路車站有步行連接，行程可從步行開始或結束。轉乘步行後最多候車 90 分鐘。</p>
 </div></section>
 <div id="legacyResults"><section class="card" id="plans"><h2>✨ 最佳轉乘方案比較（V11）</h2><p class="muted">自動比較符合指定出發時間、兩次轉乘限制的三段組合。最快抵達依第三段抵達時間排序；最低票價只比較三段票價均已確認的組合。各模式最多顯示三組，點選「套用這組」即可帶入下方車次選單。</p><div class="compare-actions" role="group" aria-label="轉乘方案排序"><button id="sortArrival" type="button" class="active" aria-pressed="true" disabled>🏁 最快抵達 TOP 3</button><button id="sortPrice" type="button" aria-pressed="false" disabled>💰 最低票價 TOP 3</button><button id="recommend" class="recommend" type="button" disabled>✨ 套用最快抵達</button></div><div id="recommendation" class="recommendation" role="status" aria-live="polite" hidden></div><div id="comparison" class="results" aria-live="polite"><p class="muted">正在載入所選日期班次…</p></div></section>
 <section class="card"><h2>自動班次資料</h2><div id="status" class="status" role="status" aria-live="polite">正在載入指定日期的 TDX 預定時刻表…</div><p class="muted small" id="meta"></p><button id="reload" type="button">重新讀取資料</button></section>
@@ -117,7 +117,7 @@ let direction='outbound',payload=null,valid=false,records=[[],[],[]],sortMode='a
 let availableDates=null,loadSequence=0;
 function twToday(){const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`}
 function addDaysISO(iso,n){const d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
-function setDateLimits(){const today=twToday();$('date').min=today;$('date').max=addDaysISO(today,30);if(!$('date').value||$('date').value<today||$('date').value>$('date').max)$('date').value=today}
+function setDateLimits(){const today=twToday();$('date').min=today;$('date').max=addDaysISO(today,7);if(!$('date').value||$('date').value<today||$('date').value>$('date').max)$('date').value=today}
 function mins(t){const m=/^([01]\d|2[0-3]):([0-5]\d)$/.exec(t||'');return m?Number(m[1])*60+Number(m[2]):NaN}
 function time(t){return pad(Math.floor(t/60)%24)+':'+pad(t%60)+(t>=1440?'（隔日）':'')}
 function placeholder(sel,message){sel.replaceChildren(new Option(message,''))}
