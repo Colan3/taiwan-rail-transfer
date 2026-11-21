@@ -1,0 +1,1030 @@
+{
+  "TRA:0900": {
+    "county": "基隆市",
+    "latitude": 25.13191
+  },
+  "TRA:0910": {
+    "county": "基隆市",
+    "latitude": 25.12305
+  },
+  "TRA:0920": {
+    "county": "基隆市",
+    "latitude": 25.10838
+  },
+  "TRA:0930": {
+    "county": "基隆市",
+    "latitude": 25.09294
+  },
+  "TRA:0940": {
+    "county": "基隆市",
+    "latitude": 25.07795
+  },
+  "TRA:0950": {
+    "county": "新北市",
+    "latitude": 25.07799
+  },
+  "TRA:0960": {
+    "county": "新北市",
+    "latitude": 25.0679
+  },
+  "TRA:0970": {
+    "county": "新北市",
+    "latitude": 25.06406
+  },
+  "TRA:0980": {
+    "county": "臺北市",
+    "latitude": 25.05348
+  },
+  "TRA:0990": {
+    "county": "臺北市",
+    "latitude": 25.04927
+  },
+  "TRA:1000": {
+    "county": "臺北市",
+    "latitude": 25.04775
+  },
+  "TRA:1001": {
+    "county": "臺北市",
+    "latitude": 25.04774
+  },
+  "TRA:1010": {
+    "county": "臺北市",
+    "latitude": 25.03339
+  },
+  "TRA:1020": {
+    "county": "新北市",
+    "latitude": 25.01434
+  },
+  "TRA:1030": {
+    "county": "新北市",
+    "latitude": 25.00419
+  },
+  "TRA:1040": {
+    "county": "新北市",
+    "latitude": 24.99123
+  },
+  "TRA:1050": {
+    "county": "新北市",
+    "latitude": 24.98044
+  },
+  "TRA:1060": {
+    "county": "新北市",
+    "latitude": 24.97273
+  },
+  "TRA:1070": {
+    "county": "新北市",
+    "latitude": 24.95455
+  },
+  "TRA:1075": {
+    "county": "新北市",
+    "latitude": 24.97268
+  },
+  "TRA:1080": {
+    "county": "桃園市",
+    "latitude": 24.98888
+  },
+  "TRA:1090": {
+    "county": "桃園市",
+    "latitude": 24.97281
+  },
+  "TRA:1100": {
+    "county": "桃園市",
+    "latitude": 24.95374
+  },
+  "TRA:1105": {
+    "county": "桃園市",
+    "latitude": 24.94301
+  },
+  "TRA:1110": {
+    "county": "桃園市",
+    "latitude": 24.91939
+  },
+  "TRA:1120": {
+    "county": "桃園市",
+    "latitude": 24.91427
+  },
+  "TRA:1130": {
+    "county": "桃園市",
+    "latitude": 24.93436
+  },
+  "TRA:1140": {
+    "county": "桃園市",
+    "latitude": 24.93109
+  },
+  "TRA:1150": {
+    "county": "新竹縣",
+    "latitude": 24.92218
+  },
+  "TRA:1160": {
+    "county": "新竹縣",
+    "latitude": 24.90303
+  },
+  "TRA:1170": {
+    "county": "新竹縣",
+    "latitude": 24.86939
+  },
+  "TRA:1180": {
+    "county": "新竹縣",
+    "latitude": 24.83919
+  },
+  "TRA:1190": {
+    "county": "新竹市",
+    "latitude": 24.80875
+  },
+  "TRA:1191": {
+    "county": "新竹市",
+    "latitude": 24.80657
+  },
+  "TRA:1192": {
+    "county": "新竹市",
+    "latitude": 24.78811
+  },
+  "TRA:1193": {
+    "county": "新竹縣",
+    "latitude": 24.78145
+  },
+  "TRA:1194": {
+    "county": "新竹縣",
+    "latitude": 24.80766
+  },
+  "TRA:1201": {
+    "county": "新竹縣",
+    "latitude": 24.77776
+  },
+  "TRA:1202": {
+    "county": "新竹縣",
+    "latitude": 24.74839
+  },
+  "TRA:1203": {
+    "county": "新竹縣",
+    "latitude": 24.73823
+  },
+  "TRA:1204": {
+    "county": "新竹縣",
+    "latitude": 24.72041
+  },
+  "TRA:1205": {
+    "county": "新竹縣",
+    "latitude": 24.72062
+  },
+  "TRA:1206": {
+    "county": "新竹縣",
+    "latitude": 24.71667
+  },
+  "TRA:1207": {
+    "county": "新竹縣",
+    "latitude": 24.71551
+  },
+  "TRA:1208": {
+    "county": "新竹縣",
+    "latitude": 24.70535
+  },
+  "TRA:1210": {
+    "county": "新竹市",
+    "latitude": 24.80157
+  },
+  "TRA:1220": {
+    "county": "新竹市",
+    "latitude": 24.78731
+  },
+  "TRA:1230": {
+    "county": "新竹市",
+    "latitude": 24.76311
+  },
+  "TRA:1240": {
+    "county": "苗栗縣",
+    "latitude": 24.72291
+  },
+  "TRA:1250": {
+    "county": "苗栗縣",
+    "latitude": 24.68654
+  },
+  "TRA:2110": {
+    "county": "苗栗縣",
+    "latitude": 24.65641
+  },
+  "TRA:2120": {
+    "county": "苗栗縣",
+    "latitude": 24.64565
+  },
+  "TRA:2130": {
+    "county": "苗栗縣",
+    "latitude": 24.61621
+  },
+  "TRA:2140": {
+    "county": "苗栗縣",
+    "latitude": 24.61169
+  },
+  "TRA:2150": {
+    "county": "苗栗縣",
+    "latitude": 24.56481
+  },
+  "TRA:2160": {
+    "county": "苗栗縣",
+    "latitude": 24.54018
+  },
+  "TRA:2170": {
+    "county": "苗栗縣",
+    "latitude": 24.49141
+  },
+  "TRA:2180": {
+    "county": "苗栗縣",
+    "latitude": 24.44344
+  },
+  "TRA:2190": {
+    "county": "臺中市",
+    "latitude": 24.37815
+  },
+  "TRA:2200": {
+    "county": "臺中市",
+    "latitude": 24.34448
+  },
+  "TRA:2210": {
+    "county": "臺中市",
+    "latitude": 24.30441
+  },
+  "TRA:2220": {
+    "county": "臺中市",
+    "latitude": 24.26364
+  },
+  "TRA:2230": {
+    "county": "臺中市",
+    "latitude": 24.23702
+  },
+  "TRA:2240": {
+    "county": "臺中市",
+    "latitude": 24.19748
+  },
+  "TRA:2250": {
+    "county": "臺中市",
+    "latitude": 24.15417
+  },
+  "TRA:2260": {
+    "county": "臺中市",
+    "latitude": 24.12051
+  },
+  "TRA:3140": {
+    "county": "苗栗縣",
+    "latitude": 24.64186
+  },
+  "TRA:3150": {
+    "county": "苗栗縣",
+    "latitude": 24.60429
+  },
+  "TRA:3160": {
+    "county": "苗栗縣",
+    "latitude": 24.57001
+  },
+  "TRA:3170": {
+    "county": "苗栗縣",
+    "latitude": 24.52246
+  },
+  "TRA:3180": {
+    "county": "苗栗縣",
+    "latitude": 24.48634
+  },
+  "TRA:3190": {
+    "county": "苗栗縣",
+    "latitude": 24.42066
+  },
+  "TRA:3210": {
+    "county": "臺中市",
+    "latitude": 24.33146
+  },
+  "TRA:3220": {
+    "county": "臺中市",
+    "latitude": 24.30933
+  },
+  "TRA:3230": {
+    "county": "臺中市",
+    "latitude": 24.25438
+  },
+  "TRA:3240": {
+    "county": "臺中市",
+    "latitude": 24.23461
+  },
+  "TRA:3250": {
+    "county": "臺中市",
+    "latitude": 24.21214
+  },
+  "TRA:3260": {
+    "county": "臺中市",
+    "latitude": 24.19572
+  },
+  "TRA:3270": {
+    "county": "臺中市",
+    "latitude": 24.18035
+  },
+  "TRA:3280": {
+    "county": "臺中市",
+    "latitude": 24.16449
+  },
+  "TRA:3290": {
+    "county": "臺中市",
+    "latitude": 24.14887
+  },
+  "TRA:3300": {
+    "county": "臺中市",
+    "latitude": 24.13728
+  },
+  "TRA:3310": {
+    "county": "臺中市",
+    "latitude": 24.12877
+  },
+  "TRA:3320": {
+    "county": "臺中市",
+    "latitude": 24.11911
+  },
+  "TRA:3330": {
+    "county": "臺中市",
+    "latitude": 24.10867
+  },
+  "TRA:3340": {
+    "county": "臺中市",
+    "latitude": 24.10937
+  },
+  "TRA:3350": {
+    "county": "臺中市",
+    "latitude": 24.11424
+  },
+  "TRA:3360": {
+    "county": "彰化縣",
+    "latitude": 24.08177
+  },
+  "TRA:3370": {
+    "county": "彰化縣",
+    "latitude": 24.02502
+  },
+  "TRA:3380": {
+    "county": "彰化縣",
+    "latitude": 23.99002
+  },
+  "TRA:3390": {
+    "county": "彰化縣",
+    "latitude": 23.95947
+  },
+  "TRA:3400": {
+    "county": "彰化縣",
+    "latitude": 23.92808
+  },
+  "TRA:3410": {
+    "county": "彰化縣",
+    "latitude": 23.89573
+  },
+  "TRA:3420": {
+    "county": "彰化縣",
+    "latitude": 23.85843
+  },
+  "TRA:3430": {
+    "county": "彰化縣",
+    "latitude": 23.81321
+  },
+  "TRA:3431": {
+    "county": "彰化縣",
+    "latitude": 23.79845
+  },
+  "TRA:3432": {
+    "county": "南投縣",
+    "latitude": 23.83467
+  },
+  "TRA:3433": {
+    "county": "南投縣",
+    "latitude": 23.83521
+  },
+  "TRA:3434": {
+    "county": "南投縣",
+    "latitude": 23.82647
+  },
+  "TRA:3435": {
+    "county": "南投縣",
+    "latitude": 23.81845
+  },
+  "TRA:3436": {
+    "county": "南投縣",
+    "latitude": 23.83263
+  },
+  "TRA:3450": {
+    "county": "雲林縣",
+    "latitude": 23.75967
+  },
+  "TRA:3460": {
+    "county": "雲林縣",
+    "latitude": 23.73167
+  },
+  "TRA:3470": {
+    "county": "雲林縣",
+    "latitude": 23.71184
+  },
+  "TRA:3480": {
+    "county": "雲林縣",
+    "latitude": 23.67257
+  },
+  "TRA:3490": {
+    "county": "雲林縣",
+    "latitude": 23.63951
+  },
+  "TRA:4050": {
+    "county": "嘉義縣",
+    "latitude": 23.60089
+  },
+  "TRA:4060": {
+    "county": "嘉義縣",
+    "latitude": 23.55522
+  },
+  "TRA:4070": {
+    "county": "嘉義市",
+    "latitude": 23.49981
+  },
+  "TRA:4080": {
+    "county": "嘉義市",
+    "latitude": 23.47915
+  },
+  "TRA:4090": {
+    "county": "嘉義縣",
+    "latitude": 23.43398
+  },
+  "TRA:4100": {
+    "county": "嘉義縣",
+    "latitude": 23.41344
+  },
+  "TRA:4110": {
+    "county": "臺南市",
+    "latitude": 23.36626
+  },
+  "TRA:4120": {
+    "county": "臺南市",
+    "latitude": 23.30673
+  },
+  "TRA:4130": {
+    "county": "臺南市",
+    "latitude": 23.27762
+  },
+  "TRA:4140": {
+    "county": "臺南市",
+    "latitude": 23.24259
+  },
+  "TRA:4150": {
+    "county": "臺南市",
+    "latitude": 23.19271
+  },
+  "TRA:4160": {
+    "county": "臺南市",
+    "latitude": 23.17284
+  },
+  "TRA:4170": {
+    "county": "臺南市",
+    "latitude": 23.13333
+  },
+  "TRA:4180": {
+    "county": "臺南市",
+    "latitude": 23.10726
+  },
+  "TRA:4190": {
+    "county": "臺南市",
+    "latitude": 23.06823
+  },
+  "TRA:4200": {
+    "county": "臺南市",
+    "latitude": 23.03825
+  },
+  "TRA:4210": {
+    "county": "臺南市",
+    "latitude": 23.01923
+  },
+  "TRA:4220": {
+    "county": "臺南市",
+    "latitude": 22.99681
+  },
+  "TRA:4250": {
+    "county": "臺南市",
+    "latitude": 22.93296
+  },
+  "TRA:4260": {
+    "county": "臺南市",
+    "latitude": 22.92354
+  },
+  "TRA:4270": {
+    "county": "臺南市",
+    "latitude": 22.90446
+  },
+  "TRA:4271": {
+    "county": "臺南市",
+    "latitude": 22.90729
+  },
+  "TRA:4272": {
+    "county": "臺南市",
+    "latitude": 22.92407
+  },
+  "TRA:4290": {
+    "county": "高雄市",
+    "latitude": 22.87821
+  },
+  "TRA:4300": {
+    "county": "高雄市",
+    "latitude": 22.85404
+  },
+  "TRA:4310": {
+    "county": "高雄市",
+    "latitude": 22.79223
+  },
+  "TRA:4320": {
+    "county": "高雄市",
+    "latitude": 22.76098
+  },
+  "TRA:4330": {
+    "county": "高雄市",
+    "latitude": 22.72696
+  },
+  "TRA:4340": {
+    "county": "高雄市",
+    "latitude": 22.68754
+  },
+  "TRA:4350": {
+    "county": "高雄市",
+    "latitude": 22.67445
+  },
+  "TRA:4360": {
+    "county": "高雄市",
+    "latitude": 22.66589
+  },
+  "TRA:4370": {
+    "county": "高雄市",
+    "latitude": 22.65185
+  },
+  "TRA:4380": {
+    "county": "高雄市",
+    "latitude": 22.64181
+  },
+  "TRA:4390": {
+    "county": "高雄市",
+    "latitude": 22.63931
+  },
+  "TRA:4400": {
+    "county": "高雄市",
+    "latitude": 22.63946
+  },
+  "TRA:4410": {
+    "county": "高雄市",
+    "latitude": 22.63879
+  },
+  "TRA:4420": {
+    "county": "高雄市",
+    "latitude": 22.63709
+  },
+  "TRA:4430": {
+    "county": "高雄市",
+    "latitude": 22.63425
+  },
+  "TRA:4440": {
+    "county": "高雄市",
+    "latitude": 22.63145
+  },
+  "TRA:4450": {
+    "county": "高雄市",
+    "latitude": 22.64016
+  },
+  "TRA:4460": {
+    "county": "高雄市",
+    "latitude": 22.65641
+  },
+  "TRA:4470": {
+    "county": "屏東縣",
+    "latitude": 22.66597
+  },
+  "TRA:5000": {
+    "county": "屏東縣",
+    "latitude": 22.66905
+  },
+  "TRA:5010": {
+    "county": "屏東縣",
+    "latitude": 22.65246
+  },
+  "TRA:5020": {
+    "county": "屏東縣",
+    "latitude": 22.63481
+  },
+  "TRA:5030": {
+    "county": "屏東縣",
+    "latitude": 22.61637
+  },
+  "TRA:5040": {
+    "county": "屏東縣",
+    "latitude": 22.58658
+  },
+  "TRA:5050": {
+    "county": "屏東縣",
+    "latitude": 22.55008
+  },
+  "TRA:5060": {
+    "county": "屏東縣",
+    "latitude": 22.51311
+  },
+  "TRA:5070": {
+    "county": "屏東縣",
+    "latitude": 22.49207
+  },
+  "TRA:5080": {
+    "county": "屏東縣",
+    "latitude": 22.45794
+  },
+  "TRA:5090": {
+    "county": "屏東縣",
+    "latitude": 22.43135
+  },
+  "TRA:5100": {
+    "county": "屏東縣",
+    "latitude": 22.41409
+  },
+  "TRA:5110": {
+    "county": "屏東縣",
+    "latitude": 22.39897
+  },
+  "TRA:5120": {
+    "county": "屏東縣",
+    "latitude": 22.36802
+  },
+  "TRA:5130": {
+    "county": "屏東縣",
+    "latitude": 22.33085
+  },
+  "TRA:5140": {
+    "county": "屏東縣",
+    "latitude": 22.30617
+  },
+  "TRA:5160": {
+    "county": "屏東縣",
+    "latitude": 22.26704
+  },
+  "TRA:5170": {
+    "county": "屏東縣",
+    "latitude": 22.28091
+  },
+  "TRA:5190": {
+    "county": "臺東縣",
+    "latitude": 22.36526
+  },
+  "TRA:5200": {
+    "county": "臺東縣",
+    "latitude": 22.46102
+  },
+  "TRA:5210": {
+    "county": "臺東縣",
+    "latitude": 22.53161
+  },
+  "TRA:5220": {
+    "county": "臺東縣",
+    "latitude": 22.61883
+  },
+  "TRA:5230": {
+    "county": "臺東縣",
+    "latitude": 22.71022
+  },
+  "TRA:5240": {
+    "county": "臺東縣",
+    "latitude": 22.76426
+  },
+  "TRA:5998": {
+    "county": "屏東縣",
+    "latitude": 22.52755
+  },
+  "TRA:5999": {
+    "county": "屏東縣",
+    "latitude": 22.52231
+  },
+  "TRA:6000": {
+    "county": "臺東縣",
+    "latitude": 22.79372
+  },
+  "TRA:6010": {
+    "county": "臺東縣",
+    "latitude": 22.86194
+  },
+  "TRA:6020": {
+    "county": "臺東縣",
+    "latitude": 22.91249
+  },
+  "TRA:6030": {
+    "county": "臺東縣",
+    "latitude": 22.95604
+  },
+  "TRA:6040": {
+    "county": "臺東縣",
+    "latitude": 22.97997
+  },
+  "TRA:6050": {
+    "county": "臺東縣",
+    "latitude": 23.04566
+  },
+  "TRA:6060": {
+    "county": "臺東縣",
+    "latitude": 23.10292
+  },
+  "TRA:6070": {
+    "county": "臺東縣",
+    "latitude": 23.12613
+  },
+  "TRA:6080": {
+    "county": "花蓮縣",
+    "latitude": 23.17924
+  },
+  "TRA:6090": {
+    "county": "花蓮縣",
+    "latitude": 23.22605
+  },
+  "TRA:6100": {
+    "county": "花蓮縣",
+    "latitude": 23.27234
+  },
+  "TRA:6110": {
+    "county": "花蓮縣",
+    "latitude": 23.33155
+  },
+  "TRA:6120": {
+    "county": "花蓮縣",
+    "latitude": 23.42458
+  },
+  "TRA:6130": {
+    "county": "花蓮縣",
+    "latitude": 23.49738
+  },
+  "TRA:6140": {
+    "county": "花蓮縣",
+    "latitude": 23.58031
+  },
+  "TRA:6150": {
+    "county": "花蓮縣",
+    "latitude": 23.60571
+  },
+  "TRA:6160": {
+    "county": "花蓮縣",
+    "latitude": 23.66631
+  },
+  "TRA:6170": {
+    "county": "花蓮縣",
+    "latitude": 23.71199
+  },
+  "TRA:6180": {
+    "county": "花蓮縣",
+    "latitude": 23.74634
+  },
+  "TRA:6190": {
+    "county": "花蓮縣",
+    "latitude": 23.78231
+  },
+  "TRA:6200": {
+    "county": "花蓮縣",
+    "latitude": 23.80176
+  },
+  "TRA:6210": {
+    "county": "花蓮縣",
+    "latitude": 23.84842
+  },
+  "TRA:6220": {
+    "county": "花蓮縣",
+    "latitude": 23.86901
+  },
+  "TRA:6230": {
+    "county": "花蓮縣",
+    "latitude": 23.88279
+  },
+  "TRA:6240": {
+    "county": "花蓮縣",
+    "latitude": 23.90769
+  },
+  "TRA:6250": {
+    "county": "花蓮縣",
+    "latitude": 23.96823
+  },
+  "TRA:7000": {
+    "county": "花蓮縣",
+    "latitude": 23.99265
+  },
+  "TRA:7010": {
+    "county": "花蓮縣",
+    "latitude": 24.03253
+  },
+  "TRA:7020": {
+    "county": "花蓮縣",
+    "latitude": 24.09041
+  },
+  "TRA:7030": {
+    "county": "花蓮縣",
+    "latitude": 24.12756
+  },
+  "TRA:7040": {
+    "county": "花蓮縣",
+    "latitude": 24.17199
+  },
+  "TRA:7050": {
+    "county": "花蓮縣",
+    "latitude": 24.24225
+  },
+  "TRA:7060": {
+    "county": "花蓮縣",
+    "latitude": 24.29839
+  },
+  "TRA:7070": {
+    "county": "宜蘭縣",
+    "latitude": 24.33543
+  },
+  "TRA:7080": {
+    "county": "宜蘭縣",
+    "latitude": 24.44879
+  },
+  "TRA:7090": {
+    "county": "宜蘭縣",
+    "latitude": 24.46342
+  },
+  "TRA:7100": {
+    "county": "宜蘭縣",
+    "latitude": 24.51827
+  },
+  "TRA:7110": {
+    "county": "宜蘭縣",
+    "latitude": 24.56843
+  },
+  "TRA:7120": {
+    "county": "宜蘭縣",
+    "latitude": 24.59516
+  },
+  "TRA:7130": {
+    "county": "宜蘭縣",
+    "latitude": 24.60852
+  },
+  "TRA:7140": {
+    "county": "宜蘭縣",
+    "latitude": 24.61541
+  },
+  "TRA:7150": {
+    "county": "宜蘭縣",
+    "latitude": 24.63633
+  },
+  "TRA:7160": {
+    "county": "宜蘭縣",
+    "latitude": 24.67791
+  },
+  "TRA:7170": {
+    "county": "宜蘭縣",
+    "latitude": 24.69415
+  },
+  "TRA:7180": {
+    "county": "宜蘭縣",
+    "latitude": 24.70528
+  },
+  "TRA:7190": {
+    "county": "宜蘭縣",
+    "latitude": 24.75457
+  },
+  "TRA:7200": {
+    "county": "宜蘭縣",
+    "latitude": 24.78681
+  },
+  "TRA:7210": {
+    "county": "宜蘭縣",
+    "latitude": 24.82703
+  },
+  "TRA:7220": {
+    "county": "宜蘭縣",
+    "latitude": 24.84391
+  },
+  "TRA:7230": {
+    "county": "宜蘭縣",
+    "latitude": 24.85898
+  },
+  "TRA:7240": {
+    "county": "宜蘭縣",
+    "latitude": 24.88375
+  },
+  "TRA:7250": {
+    "county": "宜蘭縣",
+    "latitude": 24.90484
+  },
+  "TRA:7260": {
+    "county": "宜蘭縣",
+    "latitude": 24.93836
+  },
+  "TRA:7270": {
+    "county": "宜蘭縣",
+    "latitude": 24.96677
+  },
+  "TRA:7280": {
+    "county": "宜蘭縣",
+    "latitude": 24.97832
+  },
+  "TRA:7290": {
+    "county": "新北市",
+    "latitude": 25.01595
+  },
+  "TRA:7300": {
+    "county": "新北市",
+    "latitude": 25.02197
+  },
+  "TRA:7310": {
+    "county": "新北市",
+    "latitude": 25.03851
+  },
+  "TRA:7320": {
+    "county": "新北市",
+    "latitude": 25.05871
+  },
+  "TRA:7330": {
+    "county": "新北市",
+    "latitude": 25.06555
+  },
+  "TRA:7331": {
+    "county": "新北市",
+    "latitude": 25.04998
+  },
+  "TRA:7332": {
+    "county": "新北市",
+    "latitude": 25.04111
+  },
+  "TRA:7333": {
+    "county": "新北市",
+    "latitude": 25.03445
+  },
+  "TRA:7334": {
+    "county": "新北市",
+    "latitude": 25.03016
+  },
+  "TRA:7335": {
+    "county": "新北市",
+    "latitude": 25.02571
+  },
+  "TRA:7336": {
+    "county": "新北市",
+    "latitude": 25.02391
+  },
+  "TRA:7350": {
+    "county": "新北市",
+    "latitude": 25.08702
+  },
+  "TRA:7360": {
+    "county": "新北市",
+    "latitude": 25.10872
+  },
+  "TRA:7361": {
+    "county": "基隆市",
+    "latitude": 25.13754
+  },
+  "TRA:7362": {
+    "county": "新北市",
+    "latitude": 25.13528
+  },
+  "TRA:7380": {
+    "county": "新北市",
+    "latitude": 25.10281
+  },
+  "TRA:7390": {
+    "county": "基隆市",
+    "latitude": 25.10231
+  },
+  "THSR:0990": {
+    "county": "臺北市",
+    "latitude": 25.053704
+  },
+  "THSR:1000": {
+    "county": "臺北市",
+    "latitude": 25.04767
+  },
+  "THSR:1010": {
+    "county": "新北市",
+    "latitude": 25.014214
+  },
+  "THSR:1020": {
+    "county": "桃園市",
+    "latitude": 25.012861
+  },
+  "THSR:1030": {
+    "county": "新竹縣",
+    "latitude": 24.808441
+  },
+  "THSR:1035": {
+    "county": "苗栗縣",
+    "latitude": 24.605448
+  },
+  "THSR:1040": {
+    "county": "臺中市",
+    "latitude": 24.112484
+  },
+  "THSR:1043": {
+    "county": "彰化縣",
+    "latitude": 23.874327
+  },
+  "THSR:1047": {
+    "county": "雲林縣",
+    "latitude": 23.736231
+  },
+  "THSR:1050": {
+    "county": "嘉義縣",
+    "latitude": 23.459507
+  },
+  "THSR:1060": {
+    "county": "臺南市",
+    "latitude": 22.925077
+  },
+  "THSR:1070": {
+    "county": "高雄市",
+    "latitude": 22.687391
+  }
+}

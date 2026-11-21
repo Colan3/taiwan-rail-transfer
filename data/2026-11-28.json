@@ -1,6 +1,6 @@
 {
   "date": "2026-11-28",
-  "updatedAt": "2026-11-21T20:53:00+08:00",
+  "updatedAt": "2026-11-21T21:46:48+08:00",
   "source": "TDX date-specific scheduled timetable and ODFare (not real-time)",
   "farePolicy": "Adult one-way; THSR standard reserved; TRA explicit fare categories",
   "routes": {
@@ -886,7 +886,7 @@
         "trainNo": "277",
         "departure": "20:32",
         "arrival": "21:15",
-        "fare": null,
+        "fare": 141,
         "operator": "TRA",
         "trainTypeCode": "3",
         "trainTypeName": "自強(推拉式自強號且有自行車車廂)"
@@ -987,7 +987,7 @@
         "trainNo": "270",
         "departure": "06:33",
         "arrival": "07:14",
-        "fare": null,
+        "fare": 141,
         "operator": "TRA",
         "trainTypeCode": "3",
         "trainTypeName": "自強(推拉式自強號且有自行車車廂)"
